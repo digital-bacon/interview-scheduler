@@ -34,9 +34,9 @@ export default function Application(props) {
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
       <DayList
-        days={days}
-        day={day}
-        setDay={setDay}
+        days={ days }
+        day={ day }
+        setDay={ setDay }
       />
       </nav>
       <img
@@ -46,7 +46,7 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        { /* Replace this with the schedule elements durint the "The Scheduler" activity. */ }
       </section>
     </main>
   );

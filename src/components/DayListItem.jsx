@@ -22,20 +22,20 @@ export default function DayListItem(
 
   const formatSpots = () => {
     if (spots > 1) {
-      return `${spots} spots remaining`
+      return `${ spots } spots remaining`
     }
 
     if (spots === 1) {
-      return `${spots} spot remaining`
+      return `${ spots } spot remaining`
     }
 
     return 'no spots remaining';
   }
 
   return (
-    <li className={classDayListItem} onClick={() => setDay(name)}>
-      <h2 className='text--regular'>{name}</h2>
-      <h3 className='text--light'>{formatSpots()}</h3>
+    <li className={classDayListItem} onClick={ () => setDay(name) }>
+      <h2 className='text--regular'>{ name }</h2>
+      <h3 className='text--light'>{ formatSpots() }</h3>
     </li>
    );
 }
