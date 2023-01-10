@@ -4,7 +4,6 @@ import "components/Button.scss";
 
 export default function Button(
   {
-    children,
     onClick,
     disabled: isDisabled,
     confirm: isConfirm,
@@ -12,7 +11,6 @@ export default function Button(
     ...props
   }
 ) {
-
   const classLibrary = {
     'button': true,
     'button--confirm': isConfirm,
@@ -27,7 +25,7 @@ export default function Button(
       onClick={onClick}
       disabled={isDisabled}
     >
-      {children}
+      {props.children}
     </button>
    );
 }
