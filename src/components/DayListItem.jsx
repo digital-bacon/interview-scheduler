@@ -18,7 +18,7 @@ export default function DayListItem(
     'day-list__item--full': isFull,
   }
 
-  const classDayListItem = classNames(classLibrary)
+  const classDayListItem = classNames(classLibrary);
 
   const formatSpots = () => {
     if (spots > 1) {
@@ -33,7 +33,7 @@ export default function DayListItem(
   }
 
   return (
-    <li className={classDayListItem} onClick={ () => setDay(name) }>
+    <li className={classDayListItem} onClick={ setDay }>
       <h2 className='text--regular'>{ name }</h2>
       <h3 className='text--light'>{ formatSpots() }</h3>
     </li>
