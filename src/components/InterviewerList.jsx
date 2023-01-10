@@ -12,11 +12,10 @@ export default function InterviewerList ({
     return (
         <InterviewerListItem
           key={ interviewer.id }
-          id={ interviewer.id }
           name={ interviewer.name }
           avatar={ interviewer.avatar }
           selected={ currentInterviewerId === interviewer.id ? true : false }
-          setInterviewer={ setInterviewer }
+          setInterviewer={ event => setInterviewer(interviewer.id) }
         />
       );
   })
