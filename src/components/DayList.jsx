@@ -1,5 +1,5 @@
 import React from "react";
-import DayListItem from "./DayListItem";
+import DayListItem from "./DayListItem.jsx";
 
 export default function DayList({ days: daysArray, setDay, ...props }) {
   const days = daysArray.map(day => {
