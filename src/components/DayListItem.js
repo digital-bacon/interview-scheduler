@@ -4,6 +4,7 @@ import "components/DayListItem.scss";
 
 export default function DayListItem(
   {
+    id,
     name,
     spots,
     setDay,
@@ -33,7 +34,7 @@ export default function DayListItem(
   }
 
   return (
-    <li className={classDayListItem} onClick={() => setDay(name)}>
+    <li key={id} className={classDayListItem} onClick={() => setDay(name)}>
       <h2 className='text--regular'>{name}</h2>
       <h3 className='text--light'>{formatSpots()}</h3>
     </li>
