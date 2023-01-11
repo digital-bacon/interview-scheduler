@@ -1,28 +1,83 @@
 import React, { useState } from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
+import Appointment from "./Appointment/index.jsx";
+
+const appointmentData = {
+  "1": {
+    id: 1,
+    time: "12pm",
+  },
+  "2": {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer:{
+        id: 3,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
+  },
+  "3": {
+    id: 3,
+    time: "2pm",
+  },
+  "4": {
+    id: 4,
+    time: "3pm",
+    interview: {
+      student: "Archie Andrews",
+      interviewer:{
+        id: 4,
+        name: "Cohana Roy",
+        avatar: "https://i.imgur.com/FK8V841.jpg",
+      }
+    }
+  },
+  "5": {
+    id: 5,
+    time: "4pm",
+  }
+};
+
+const days = [
+  {
+    id: 1,
+    name: "Monday",
+    spots: 2,
+  },
+  {
+    id: 2,
+    name: "Tuesday",
+    spots: 5,
+  },
+  {
+    id: 3,
+    name: "Wednesday",
+    spots: 0,
+  },
+];
 
 export default function Application(props) {
   const [day, setDay] = useState('Monday');
-  
-  const days = [
-    {
-      id: 1,
-      name: "Monday",
-      spots: 2,
-    },
-    {
-      id: 2,
-      name: "Tuesday",
-      spots: 5,
-    },
-    {
-      id: 3,
-      name: "Wednesday",
-      spots: 0,
-    },
-  ];
-  
+
+  const onEdit = () => console.log('onEdit triggered');
+  const onDelete = () => console.log('onDelete triggered');
+
+  const appointmentArray = Object.values(appointmentData);
+  const appointments = appointmentArray.map(appointment => {
+    return (
+      <Appointment
+        key={ appointment.id }
+        onEdit={ onEdit }
+        onDelete={ onDelete }
+        { ...appointment }
+      />
+    );
+  });
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -46,7 +101,8 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        { /* Replace this with the schedule elements durint the "The Scheduler" activity. */ }
+        { appointments }
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
