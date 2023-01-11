@@ -8,7 +8,7 @@ export default function InterviewerListItem (
     name,
     avatar,
     selected: isSelected,
-    setInterviewer,
+    onChange,
     ...props
   }
 ) {
@@ -28,7 +28,7 @@ export default function InterviewerListItem (
 
   
   return (
-    <li className={ classLi } onClick={ setInterviewer }>
+    <li className={ classLi } onClick={ onChange }>
       <img
         className={ classImg }
         src={ avatar }

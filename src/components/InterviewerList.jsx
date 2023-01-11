@@ -5,7 +5,7 @@ import InterviewerListItem from "./InterviewerListItem";
 export default function InterviewerList ({
   interviewers: interviewersArray,
   interviewer: currentInterviewerId,
-  setInterviewer,
+  onChange,
   ...props }) {
 
   const interviewers = interviewersArray.map(interviewer => {
@@ -15,7 +15,7 @@ export default function InterviewerList ({
           name={ interviewer.name }
           avatar={ interviewer.avatar }
           selected={ currentInterviewerId === interviewer.id ? true : false }
-          setInterviewer={ event => setInterviewer(interviewer.id) }
+          onChange={ event => onChange(interviewer.id) }
         />
       );
   })
