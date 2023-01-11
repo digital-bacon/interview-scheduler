@@ -10,14 +10,26 @@ export default function Form({
   onCancel,
   ...props
 }) {
-  const [student, setStudent] = useState(studentName || "");
+  const [student, setStudentName] = useState(studentName || "");
   const [interviewer, setInterviewer] = useState(interviewerId || null);
-  const onStudentNameInput = (event) => setStudent(event.target.value);
+  const onStudentNameInput = (event) => setStudentName(event.target.value);
+  
+  const reset = () => {
+    setStudentName('');
+    setInterviewer(null);
+  }
+
+  const cancel = () => {
+    reset();
+    onCancel();
+  }
+
+  const handleSubmit = (event) => event.preventDefault();
 
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={ handleSubmit }>
           <input
             className="appointment__create-input text--semi-bold"
             name="name"
@@ -35,7 +47,7 @@ export default function Form({
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={ onCancel }>Cancel</Button>
+          <Button danger onClick={ cancel }>Cancel</Button>
           <Button confirm onClick={ onSave }>Save</Button>
         </section>
       </section>
