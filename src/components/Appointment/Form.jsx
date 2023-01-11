@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
-export default function Form({
+const Form = ({
   student: studentName,
   interviewers,
   interviewer: interviewerId,
   onSave,
   onCancel,
   ...props
-}) {
+}) => {
   const [student, setStudentName] = useState(studentName || "");
   const [interviewer, setInterviewer] = useState(interviewerId || null);
   const onStudentNameInput = (event) => setStudentName(event.target.value);
@@ -54,3 +54,5 @@ export default function Form({
     </main>
   );
 }
+
+export default Form;

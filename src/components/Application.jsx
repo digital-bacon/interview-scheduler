@@ -60,7 +60,7 @@ const days = [
   },
 ];
 
-export default function Application(props) {
+const Application = (props) => {
   const [day, setDay] = useState('Monday');
 
   const onEdit = () => console.log('onEdit triggered');
@@ -107,3 +107,5 @@ export default function Application(props) {
     </main>
   );
 }
+
+export default Application;

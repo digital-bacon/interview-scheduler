@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Header({ time, ...props }) {
+const Header = ({ time, ...props }) => {
   return (
     <header className="appointment__time">
       <h4 className="text--semi-bold">{ time }</h4>
@@ -8,3 +8,5 @@ export default function Header({ time, ...props }) {
     </header>
   );
 }
+
+export default Header;

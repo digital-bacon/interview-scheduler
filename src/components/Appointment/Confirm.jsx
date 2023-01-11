@@ -1,12 +1,12 @@
 import React from "react";
 import Button from 'components/Button.jsx';
 
-export default function Confirm({
+const Confirm = ({
   message,
   onConfirm,
   onCancel,
   ...props
-}) {
+}) => {
   return (
     <main className="appointment__card appointment__card--confirm">
       <h1 className="text--semi-bold">{ message }</h1>
@@ -17,3 +17,5 @@ export default function Confirm({
     </main>
   );
 }
+
+export default Confirm;

@@ -2,12 +2,12 @@ import React from "react";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "./InterviewerListItem";
 
-export default function InterviewerList ({
+const InterviewerList = ({
   interviewers: interviewersArray,
   value: currentInterviewerId,
   onChange,
-  ...props }) {
-
+  ...props
+}) => {
   const interviewers = interviewersArray.map(interviewer => {
     return (
         <InterviewerListItem
@@ -30,3 +30,5 @@ export default function InterviewerList ({
     </section>
   );
 }
+
+export default InterviewerList;

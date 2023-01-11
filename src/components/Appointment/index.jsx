@@ -4,15 +4,14 @@ import Empty from "components/Appointment/Empty.jsx";
 import Show from "components/Appointment/Show.jsx";
 import 'components/Appointment/styles.scss';
 
-export default function Appointment({
+const Appointment = ({
   id,
   time,
   interview,
   onEdit,
   onDelete,
   ...props
-}) {
-
+}) => {
   const student = interview?.student;
   const interviewer = interview?.interviewer.name;
 
@@ -31,3 +30,5 @@ export default function Appointment({
     </article>
   );
 }
+
+export default Appointment;

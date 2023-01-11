@@ -2,16 +2,14 @@ import React from "react";
 import classNames from 'classnames';
 import "components/InterviewerListItem.scss";
 
-export default function InterviewerListItem (
-  {
+const InterviewerListItem = ({
     id,
     name,
     avatar,
     selected: isSelected,
     setInterviewer,
     ...props
-  }
-) {
+}) => {
   const classLibrary = {
     li: {
       'interviewers__item': true,
@@ -38,3 +36,5 @@ export default function InterviewerListItem (
     </li>
   );
 }
+
+export default InterviewerListItem;

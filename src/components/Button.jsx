@@ -2,15 +2,13 @@ import React from "react";
 import classNames from 'classnames';
 import "components/Button.scss";
 
-export default function Button(
-  {
-    onClick,
-    disabled: isDisabled,
-    confirm: isConfirm,
-    danger: isDanger,
-    ...props
-  }
-) {
+const Button = ({
+  onClick,
+  disabled: isDisabled,
+  confirm: isConfirm,
+  danger: isDanger,
+  ...props
+}) => {
   const classLibrary = {
     'button': true,
     'button--confirm': isConfirm,
@@ -29,3 +27,5 @@ export default function Button(
     </button>
    );
 }
+
+export default Button;

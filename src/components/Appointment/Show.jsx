@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function Show({
+const Show = ({
   student: studentName,
   interviewer: interviewerName,
   onEdit,
   onDelete,
   ...props
-}) {
+}) => {
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
@@ -35,3 +35,5 @@ export default function Show({
     </main>
   );
 }
+
+export default Show;

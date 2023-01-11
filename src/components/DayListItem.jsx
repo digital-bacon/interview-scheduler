@@ -2,15 +2,13 @@ import React from "react";
 import classNames from 'classnames';
 import "components/DayListItem.scss";
 
-export default function DayListItem(
-  {
-    name,
-    spots,
-    setDay,
-    selected: isSelected,
-    ...props
-  }
-) {
+const DayListItem = ({
+  name,
+  spots,
+  setDay,
+  selected: isSelected,
+  ...props
+}) => {
   const isFull = spots === 0 ? true : false;
   const classLibrary = {
     'day-list__item': true,
@@ -39,3 +37,5 @@ export default function DayListItem(
     </li>
    );
 }
+
+export default DayListItem;
