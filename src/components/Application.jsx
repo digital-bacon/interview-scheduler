@@ -48,13 +48,14 @@ const Application = (props) => {
     day: "Monday",
     days: [],
     appointments: {},
-  })
-
-  const onEdit = () => console.log('onEdit triggered');
-  const onDelete = () => console.log('onDelete triggered');
+  });
+  
   const setDay = day => setState(prev => ({...prev, day}));
   const setDays = days => setState(prev => ({...prev, days}));
   // const setAppointments = appointments => setState({...prev, appointments});
+
+  const onEdit = () => console.log('onEdit triggered');
+  const onDelete = () => console.log('onDelete triggered');
 
   useEffect(() => {
     const url = 'http://localhost:8001/api/days';
