@@ -44,18 +44,24 @@ const appointmentData = {
 };
 
 const Application = (props) => {
-  const [day, setDay] = useState('Monday');
-  const [days, setDays] = useState([]);
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {},
+  })
 
   const onEdit = () => console.log('onEdit triggered');
   const onDelete = () => console.log('onDelete triggered');
+  const setDay = day => setState(prev => ({...prev, day}));
+  const setDays = days => setState(prev => ({...prev, days}));
+  // const setAppointments = appointments => setState({...prev, appointments});
 
   useEffect(() => {
     const url = 'http://localhost:8001/api/days';
     axios.get(url)
       .then(response => setDays(response.data))
       .catch(error => console.log(error.message));
-  }, [days])
+  }, [state.days])
 
   const appointmentArray = Object.values(appointmentData);
   const appointments = appointmentArray.map(appointment => {
@@ -80,8 +86,8 @@ const Application = (props) => {
       <hr className="sidebar__separator sidebar--centered" />
       <nav className="sidebar__menu">
       <DayList
-        days={ days }
-        value={ day }
+        days={ state.days }
+        value={ state.day }
         onChange={ setDay }
       />
       </nav>
