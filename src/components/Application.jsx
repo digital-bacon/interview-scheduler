@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import DayList from "./DayList";
 import "components/Application.scss";
-import Appointment from "./Appointment/index.jsx";
+import Appointment from "./Appointment";
 
 const appointmentData = {
   "1": {

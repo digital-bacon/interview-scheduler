@@ -1,5 +1,5 @@
 import React from "react";
-import DayListItem from "./DayListItem.jsx";
+import DayListItem from "./DayListItem";
 
 const DayList = ({
   days: daysArray,

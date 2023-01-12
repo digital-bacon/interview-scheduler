@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "components/Appointment/Header.jsx";
-import Empty from "components/Appointment/Empty.jsx";
-import Show from "components/Appointment/Show.jsx";
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
+import Show from "components/Appointment/Show";
 import 'components/Appointment/styles.scss';
 
 const Appointment = ({
