@@ -4,7 +4,7 @@ import InterviewerListItem from "./InterviewerListItem";
 
 const InterviewerList = ({
   interviewers: interviewersArray,
-  value: currentInterviewerId,
+  interviewer: currentInterviewerId,
   onChange,
   ...props
 }) => {
