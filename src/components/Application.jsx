@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import DayList from "./DayList";
 import Appointment from "./Appointment";
-import { getAppointmentsForDay } from "helpers/selectors";
+import {
+  getAppointmentsForDay,
+  getInterview
+} from "helpers/selectors";
 import "components/Application.scss";
 
 const Application = (props) => {
@@ -20,9 +23,9 @@ const Application = (props) => {
 
   useEffect(() => {
     const apis = {
-      days: 'http://localhost:8001/api/days',
-      appointments: 'http://localhost:8001/api/appointments',
-      interviewers: 'http://localhost:8001/api/interviewers'
+      days: 'api/days',
+      appointments: 'api/appointments',
+      interviewers: 'api/interviewers'
     };
 
     Promise.all([
@@ -47,6 +50,7 @@ const Application = (props) => {
         onEdit={ onEdit }
         onDelete={ onDelete }
         { ...appointment }
+        interview={ getInterview(state, appointment.interview) }
       />
     );
   });
