@@ -12,17 +12,23 @@ const Application = (props) => {
     appointments: {},
     interviewers: {}
   });
-
+  
   const setDay = day => setState(prev => ({...prev, day}));
 
   const onEdit = () => console.log('onEdit triggered');
   const onDelete = () => console.log('onDelete triggered');
 
   useEffect(() => {
+    const apis = {
+      days: 'http://localhost:8001/api/days',
+      appointments: 'http://localhost:8001/api/appointments',
+      interviewers: 'http://localhost:8001/api/interviewers'
+    };
+
     Promise.all([
-      Promise.resolve(axios.get('http://localhost:8001/api/days')),
-      Promise.resolve(axios.get('http://localhost:8001/api/appointments')),
-      Promise.resolve(axios.get('http://localhost:8001/api/interviewers'))
+      Promise.resolve(axios.get(apis.days)),
+      Promise.resolve(axios.get(apis.appointments)),
+      Promise.resolve(axios.get(apis.interviewers))
     ])
     .then(all => {
       const days = all[0].data;
