@@ -9,7 +9,18 @@ const getAppointmentsForDay = (data, dayName) => {
   return appointmentsFromData;
 }
 
+const getInterview = (data, interview) => {
+  if (!interview) {
+    return null;
+  }
+  const interviewerId = interview.interviewer;
+  const interviewerData = data.interviewers[interviewerId] || {};
+  const interviewFromData = { ...interview , interviewer: { ...interviewerData } }
+  return interviewFromData;
+}
+
 export {
   getDay,
-  getAppointmentsForDay
+  getAppointmentsForDay,
+  getInterview
 }
