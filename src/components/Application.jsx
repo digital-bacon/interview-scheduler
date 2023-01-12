@@ -10,6 +10,7 @@ const Application = (props) => {
     day: "Monday",
     days: [],
     appointments: {},
+    interviewers: {}
   });
 
   const setDay = day => setState(prev => ({...prev, day}));
@@ -20,12 +21,14 @@ const Application = (props) => {
   useEffect(() => {
     Promise.all([
       Promise.resolve(axios.get('http://localhost:8001/api/days')),
-      Promise.resolve(axios.get('http://localhost:8001/api/appointments'))
+      Promise.resolve(axios.get('http://localhost:8001/api/appointments')),
+      Promise.resolve(axios.get('http://localhost:8001/api/interviewers'))
     ])
     .then(all => {
       const days = all[0].data;
       const appointments = all[1].data;
-      setState(prev => ({ ...prev, days, appointments }));
+      const interviewers = all[2].data;
+      setState(prev => ({ ...prev, days, appointments, interviewers }));
     })
     .catch(error => console.log(error.message));
   }, []);
