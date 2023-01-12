@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import DayList from "./DayList";
 import Appointment from "./Appointment";
+import { getAppointmentsForDay } from "helpers/selectors";
 import "components/Application.scss";
 
 const Application = (props) => {
@@ -29,7 +30,7 @@ const Application = (props) => {
     .catch(error => console.log(error.message));
   }, []);
 
-  const dailyAppointments = [];
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
   const appointments = dailyAppointments.map(appointment => {
     return (
       <Appointment
