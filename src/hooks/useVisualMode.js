@@ -5,21 +5,29 @@ const useVisualMode = (initial) => {
   const [history, setHistory] = useState([initial]);
   // console.log('history: ', history);
 
-  const transition = newMode => {
+  const removeLastFromHistory = () => {
+    if (history.length > 0) {
+      return history.pop();
+    }
+  }
+  
+  const transition = (newMode, replace = false) => {
+    // When replace is true then set the history to reflect that we are replacing the current mode.
+    if (replace) {
+      removeLastFromHistory();
+    }
+
     setHistory(() => [ ...history, newMode ]);
     setMode(() => newMode);
   };
 
   const back = () => {
-    if (history.length > 0) {
-      const removed = history.pop();
-      setHistory(() => [ ...history ])
-    }
-    
+    removeLastFromHistory();
     let newMode = initial;
     if (history.length > 0) {
       newMode = history[history.length - 1]
     }
+
     setMode(() => newMode);
   };
 
