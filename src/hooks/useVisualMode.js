@@ -3,19 +3,15 @@ import { useState } from "react";
 const useVisualMode = (initial) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
-  
-  const copyOfHistoryWithoutLastIndex = () => [...history.slice(0, -1)];
-
-  const copyOfHistory = () => [...history];
 
   const addToHistory = (newMode, replaceLast = false) => {
-    const buffer = replaceLast ? copyOfHistoryWithoutLastIndex() : copyOfHistory();
-    const bufferLastValue = [...buffer].pop();
-    if (newMode !== bufferLastValue) {
-      return setHistory([...buffer, newMode]);
+    const newHistory = replaceLast ? copyArray(history, dropLastIndex) : copyArray(history);
+    const newHistoryLastValue = getLastElement(newHistory);
+    if (newMode !== newHistoryLastValue) {
+      return setHistory([...newHistory, newMode]);
     }
 
-    return setHistory([...buffer]);
+    return setHistory([...newHistory]);
   }
   
   const transition = (newMode, replaceLast = false) => {
@@ -25,10 +21,19 @@ const useVisualMode = (initial) => {
   
   // Function that transitions to the previous mode in the history state
   const back = () => {
-    const buffer = copyOfHistoryWithoutLastIndex();
-    const newMode = buffer.length > 0 ? buffer.pop() : initial;
+    const newHistory = copyArray(history, dropLastIndex);
+    const newMode = newHistory.length > 0 ? newHistory.pop() : initial;
     transition(newMode, true);
   };
+
+  const dropLastIndex = array => array.slice(0, -1);
+
+  const getLastElement = array => array[array.length - 1];
+
+  const copyArray = (array, callback) => {
+    const newArray = [...array];
+    return callback ? callback(newArray) : newArray;
+  }
   
   return {
     mode,
