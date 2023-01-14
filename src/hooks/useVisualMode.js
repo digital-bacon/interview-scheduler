@@ -5,7 +5,7 @@ const useVisualMode = (initial) => {
   const [history, setHistory] = useState([initial]);
   
   const copyOfHistoryWithoutLastIndex = () => [...history.slice(0, -1)];
-  
+
   const copyOfHistory = () => [...history];
 
   const addToHistory = (newMode, replaceLast = false) => {
@@ -30,7 +30,7 @@ const useVisualMode = (initial) => {
     transition(newMode, true);
   };
   
-  return { 
+  return {
     mode,
     transition,
     back,

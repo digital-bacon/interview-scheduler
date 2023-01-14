@@ -14,6 +14,7 @@ const Appointment = ({
   id,
   time,
   interview,
+  interviewers,
   onEdit,
   onDelete,
   ...props
@@ -40,7 +41,7 @@ const Appointment = ({
         <Form
           student={ student }
           interviewer={ interviewer }
-          interviewers={[]}
+          interviewers={ interviewers }
           onSave={() => console.log('onSave')}
           onCancel={ back }
         />

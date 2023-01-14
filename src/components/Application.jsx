@@ -4,6 +4,7 @@ import DayList from "./DayList";
 import Appointment from "./Appointment";
 import {
   getAppointmentsForDay,
+  getInterviewersForDay,
   getInterview
 } from "helpers/selectors";
 import "components/Application.scss";
@@ -51,6 +52,7 @@ const Application = (props) => {
         onDelete={ onDelete }
         { ...appointment }
         interview={ getInterview(state, appointment.interview) }
+        interviewers={ getInterviewersForDay(state, state.day) }
       />
     );
   });
