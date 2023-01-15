@@ -4,25 +4,28 @@ const useVisualMode = (initial) => {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  const addToHistory = (newMode, replaceLast = false) => {
-    const newHistory = replaceLast ? copyArray(history, dropLastIndex) : copyArray(history);
-    const newHistoryLastValue = getLastElement(newHistory);
-    if (newMode !== newHistoryLastValue) {
+  const copyHistory = (callback) => {
+    const newArray = [...history];
+    return callback ? callback(newArray) : newArray;
+  }
+
+  const addToHistory = (newMode, replaceLastMode = false) => {
+    const newHistory = replaceLastMode ? copyHistory(dropLastIndex) : copyHistory();
+    const lastModeInHistory = getLastElement(newHistory);
+    if (newMode !== lastModeInHistory) {
       return setHistory([...newHistory, newMode]);
     }
 
     return setHistory([...newHistory]);
   }
   
-  const transition = (newMode, replaceLast = false) => {
-    addToHistory(newMode, replaceLast);
+  const transition = (newMode, replaceLastMode = false) => {
+    addToHistory(newMode, replaceLastMode);
     setMode(newMode);
   };
   
-  // Function that transitions to the previous mode in the history state
   const back = () => {
-    const newHistory = copyArray(history, dropLastIndex);
-    const newMode = newHistory.length > 0 ? newHistory.pop() : initial;
+    const newMode = getPreviousMode();
     transition(newMode, true);
   };
 
@@ -30,11 +33,14 @@ const useVisualMode = (initial) => {
 
   const getLastElement = array => array[array.length - 1];
 
-  const copyArray = (array, callback) => {
-    const newArray = [...array];
-    return callback ? callback(newArray) : newArray;
+  const getPreviousMode = () => {
+    if (history.length >= 2) {
+      return history[history.length - 2];
+    }
+    
+    return history[history.length - 1];
   }
-  
+
   return {
     mode,
     transition,
