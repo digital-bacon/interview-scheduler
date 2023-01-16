@@ -42,6 +42,7 @@ const Application = (props) => {
 
   const interviewers = getInterviewersForDay(state, state.day);
   
+  // TODO: abstract this block to a hook named something like useAppData
   useEffect(() => {
     const apis = {
       days: 'api/days',
