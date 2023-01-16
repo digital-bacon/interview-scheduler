@@ -25,13 +25,13 @@ const Appointment = ({
   );
 
   const save = (name, interviewer) => {
-    bookInterview(name, interviewer);
     const interview = {
       student: name,
       interviewer
     };
+    bookInterview(id, interview);
     console.log('interview= ', interview)
-    // transition(SHOW);  
+    transition(SHOW);  
   }
 
   
@@ -47,6 +47,7 @@ const Appointment = ({
         <Show
           student={ student }
           interviewer={ interviewer }
+          id={id}
           onEdit={ onEdit }
           onDelete={ onDelete }
         />
