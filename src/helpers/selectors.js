@@ -1,10 +1,10 @@
-const getUniqueArrayValues = fromArray => [...new Set(fromArray)];
+// const getUniqueArrayValues = fromArray => [...new Set(fromArray)];
 
-const getInterviewerById = (data, interviewerId) => {
-  const interviewersFromData = Object.values(data.interviewers);
-  const interviewer = interviewersFromData.find(interviewer => interviewer.id === interviewerId) || {};
-  return interviewer;
-}
+// const getInterviewerById = (data, interviewerId) => {
+//   const interviewersFromData = Object.values(data.interviewers);
+//   const interviewer = interviewersFromData.find(interviewer => interviewer.id === interviewerId) || {};
+//   return interviewer;
+// }
 
 const getInterview = (data, interview) => {
   if (!interview) {
@@ -28,22 +28,28 @@ const getAppointmentsForDay = (data, dayName) => {
   return appointmentsFromDay;
 }
 
-const getInterviewsForDay = (data, dayName) => {
-  const appointmentsFromDay = getAppointmentsForDay(data, dayName);
-  const interviewsFromDay = appointmentsFromDay.filter(appointment => appointment.interview !== null) || [];
-  return interviewsFromDay;
-}
+// const getInterviewsForDay = (data, dayName) => {
+//   const appointmentsFromDay = getAppointmentsForDay(data, dayName);
+//   const interviewsFromDay = appointmentsFromDay.filter(appointment => appointment.interview !== null) || [];
+//   return interviewsFromDay;
+// }
+
+// const getInterviewerIdsForDay = (data, dayName) => {
+//   const interviewsFromDay = getInterviewsForDay(data, dayName);
+//   const interviewerIdsFromInterviews = interviewsFromDay.map(appointment => appointment.interview.interviewer);
+//   const uniqueInterviewerIdsFromInterviews = getUniqueArrayValues(interviewerIdsFromInterviews);
+//   return uniqueInterviewerIdsFromInterviews;
+// }
 
 const getInterviewerIdsForDay = (data, dayName) => {
-  const interviewsFromDay = getInterviewsForDay(data, dayName);
-  const interviewerIdsFromInterviews = interviewsFromDay.map(appointment => appointment.interview.interviewer);
-  const uniqueInterviewerIdsFromInterviews = getUniqueArrayValues(interviewerIdsFromInterviews);
-  return uniqueInterviewerIdsFromInterviews;
+  const dayFromData = getDayByName(data, dayName);
+  const interviewerIdsFromDay = dayFromData.interviewers;
+  return interviewerIdsFromDay;
 }
 
 const getInterviewersForDay = (data, dayName) => {
   const interviewerIdsFromDay = getInterviewerIdsForDay(data, dayName);
-  const interviewersFromDay = interviewerIdsFromDay.map(id => getInterviewerById(data, id));
+  const interviewersFromDay = interviewerIdsFromDay?.map(id => data.interviewers[id]) || [];
   return interviewersFromDay;
 }
 

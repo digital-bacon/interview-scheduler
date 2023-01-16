@@ -47,8 +47,6 @@ const Application = (props) => {
       .catch(error => console.log('Error', error.message));
   }
 
-  const interviewers = getInterviewersForDay(state, state.day);
-  
   // TODO: abstract this block to a hook named something like useAppData
   useEffect(() => {
     const apis = {
@@ -72,6 +70,7 @@ const Application = (props) => {
   }, []);
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
   const appointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
     return (
