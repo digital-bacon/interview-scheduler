@@ -1,12 +1,14 @@
 import React from "react";
 import useVisualMode from "hooks/useVisualMode";
-import Header from "components/Appointment/Header";
+import Confirm from "components/Appointment/Confirm";
 import Empty from "components/Appointment/Empty";
-import Show from "components/Appointment/Show";
 import Form from "components/Appointment/Form";
+import Header from "components/Appointment/Header";
+import Show from "components/Appointment/Show";
 import Status from "components/Appointment/Status";
 import 'components/Appointment/styles.scss';
 
+const CONFIRM = "CONFIRM";
 const CREATE = "CREATE";
 const DELETING = "DELETING";
 const EMPTY = "EMPTY";
@@ -47,19 +49,28 @@ const Appointment = ({
       .catch(error => console.log(error.message));
   }
 
+  const onConfirm = () => transition(CONFIRM);
+
   return (
     <article className="appointment">
       <Header time={ time }/>
-      { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
-      { mode === SAVING && <Status message={ 'Saving' } /> }
       { mode === DELETING && <Status message={ 'Deleting' } /> }
+      { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
+      { mode === CONFIRM && (
+        <Confirm
+          message={ `Delete appointment for ${student} with ${interviewer}?`}
+          onConfirm={ onDelete }
+          onCancel={ back }
+        />
+      ) }
+      { mode === SAVING && <Status message={ 'Saving' } /> }
       { mode === SHOW && (
         <Show
           student={ student }
           interviewer={ interviewer }
           id={id}
           onEdit={ onEdit }
-          onDelete={ onDelete }
+          onDelete={ onConfirm }
         />
       ) }
       { mode === CREATE && (
