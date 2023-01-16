@@ -30,14 +30,16 @@ const Application = (props) => {
       [id]: appointment
     };
 
-    axios.put(`/api/appointments/${id}`, { ...appointment })
-      .then(response => console.log(response))
+    return axios.put(`/api/appointments/${id}`, { ...appointment })
+      .then(response => {
+        setState({
+          ...state,
+          appointments: { ...appointments }
+        });
+        return response;
+      })
+      .then(response => response.data)
       .catch(error => console.log('Error', error.message));
-      
-    setState({
-      ...state,
-      appointments: { ...appointments }
-    });
 
   }
 

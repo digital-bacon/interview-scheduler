@@ -1,6 +1,6 @@
 import React from "react";
 
-const Status = ({message, ...props}) => {
+const Status = ({ message, ...props }) => {
   return (
     <main className="appointment__card appointment__card--status">
       <img

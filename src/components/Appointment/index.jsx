@@ -4,10 +4,12 @@ import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Form from "components/Appointment/Form";
+import Status from "components/Appointment/Status";
 import 'components/Appointment/styles.scss';
 
 const CREATE = "CREATE";
 const EMPTY = "EMPTY";
+const SAVING = "SAVING";
 const SHOW = "SHOW";
 
 const Appointment = ({
@@ -24,12 +26,14 @@ const Appointment = ({
   const { mode, transition, back } = useVisualMode(initialMode);
 
   const save = (name, interviewer) => {
+    transition(SAVING);
     const interview = {
       student: name,
       interviewer
     };
-    bookInterview(id, interview);
-    transition(SHOW);  
+    bookInterview(id, interview)
+      .then(() => transition(SHOW))
+      .catch(error => console.log(error.message));
   }
 
   
@@ -41,6 +45,7 @@ const Appointment = ({
     <article className="appointment">
       <Header time={ time }/>
       { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
+      { mode === SAVING && <Status message={ 'Saving' } /> }
       { mode === SHOW && (
         <Show
           student={ student }
