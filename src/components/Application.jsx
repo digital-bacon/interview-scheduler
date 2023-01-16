@@ -16,14 +16,13 @@ const Application = (props) => {
     appointments: {},
     interviewers: {}
   });
+
+  console.log('state = ', state)
   
   const setDay = day => setState(prev => ({...prev, day}));
 
-  const onEdit = () => console.log('onEdit triggered');
-
-  const onDelete = () => console.log('onDelete triggered');
-
   const bookInterview = (id, interview) => {
+    console.log(id, interview)
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -38,7 +37,10 @@ const Application = (props) => {
       ...state,
       appointments: { ...appointments }
     });
+
   }
+
+  const interviewers = getInterviewersForDay(state, state.day);
   
   useEffect(() => {
     const apis = {
@@ -63,14 +65,13 @@ const Application = (props) => {
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const appointments = dailyAppointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
         key={ appointment.id }
-        onEdit={ onEdit }
-        onDelete={ onDelete }
         { ...appointment }
-        interview={ getInterview(state, appointment.interview) }
-        interviewers={ getInterviewersForDay(state, state.day) }
+        interview={ interview }
+        interviewers={ interviewers }
         bookInterview={ bookInterview }
       />
     );

@@ -15,8 +15,6 @@ const Appointment = ({
   time,
   interview,
   interviewers,
-  onEdit,
-  onDelete,
   bookInterview,
   ...props
 }) => {
@@ -31,8 +29,15 @@ const Appointment = ({
     const interview = {
       student: name,
       interviewer
-    }
+    };
+    console.log('interview= ', interview)
+    // transition(SHOW);  
   }
+
+  
+  const onEdit = () => console.log('onEdit triggered');
+
+  const onDelete = () => console.log('onDelete triggered');
 
   return (
     <article className="appointment">
