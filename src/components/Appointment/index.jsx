@@ -8,6 +8,7 @@ import Status from "components/Appointment/Status";
 import 'components/Appointment/styles.scss';
 
 const CREATE = "CREATE";
+const DELETING = "DELETING";
 const EMPTY = "EMPTY";
 const SAVING = "SAVING";
 const SHOW = "SHOW";
@@ -18,6 +19,7 @@ const Appointment = ({
   interview,
   interviewers,
   bookInterview,
+  cancelInterview,
   ...props
 }) => {
   const student = interview?.student;
@@ -35,17 +37,22 @@ const Appointment = ({
       .then(() => transition(SHOW))
       .catch(error => console.log(error.message));
   }
-
   
   const onEdit = () => console.log('onEdit triggered');
 
-  const onDelete = () => console.log('onDelete triggered');
+  const onDelete = () => {
+    transition(DELETING);
+    cancelInterview(id)
+      .then(() => transition(EMPTY))
+      .catch(error => console.log(error.message));
+  }
 
   return (
     <article className="appointment">
       <Header time={ time }/>
       { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
       { mode === SAVING && <Status message={ 'Saving' } /> }
+      { mode === DELETING && <Status message={ 'Deleting' } /> }
       { mode === SHOW && (
         <Show
           student={ student }

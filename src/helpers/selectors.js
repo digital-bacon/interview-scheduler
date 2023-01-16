@@ -30,7 +30,7 @@ const getAppointmentsForDay = (data, dayName) => {
 
 const getInterviewsForDay = (data, dayName) => {
   const appointmentsFromDay = getAppointmentsForDay(data, dayName);
-  const interviewsFromDay = appointmentsFromDay.filter(appointment => appointment.interview !== null);
+  const interviewsFromDay = appointmentsFromDay.filter(appointment => appointment.interview !== null) || [];
   return interviewsFromDay;
 }
 
