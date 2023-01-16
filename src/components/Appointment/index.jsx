@@ -20,9 +20,8 @@ const Appointment = ({
 }) => {
   const student = interview?.student;
   const interviewer = interview?.interviewer.name;
-  const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
-  );
+  const initialMode = interview ? SHOW : EMPTY;
+  const { mode, transition, back } = useVisualMode(initialMode);
 
   const save = (name, interviewer) => {
     const interview = {
@@ -30,7 +29,6 @@ const Appointment = ({
       interviewer
     };
     bookInterview(id, interview);
-    console.log('interview= ', interview)
     transition(SHOW);  
   }
 
