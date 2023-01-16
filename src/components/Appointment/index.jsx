@@ -17,6 +17,7 @@ const Appointment = ({
   interviewers,
   onEdit,
   onDelete,
+  bookInterview,
   ...props
 }) => {
   const student = interview?.student;
@@ -24,6 +25,14 @@ const Appointment = ({
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
+  const save = (name, interviewer) => {
+    bookInterview(name, interviewer);
+    const interview = {
+      student: name,
+      interviewer
+    }
+  }
 
   return (
     <article className="appointment">
@@ -42,7 +51,7 @@ const Appointment = ({
           student={ student }
           interviewer={ interviewer }
           interviewers={ interviewers }
-          onSave={() => console.log('onSave')}
+          onSave={ save }
           onCancel={ back }
         />
       ) }

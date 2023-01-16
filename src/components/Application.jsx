@@ -20,8 +20,26 @@ const Application = (props) => {
   const setDay = day => setState(prev => ({...prev, day}));
 
   const onEdit = () => console.log('onEdit triggered');
+
   const onDelete = () => console.log('onDelete triggered');
 
+  const bookInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({
+      ...state,
+      appointments: { ...appointments }
+    });
+  }
+  
   useEffect(() => {
     const apis = {
       days: 'api/days',
@@ -53,6 +71,7 @@ const Application = (props) => {
         { ...appointment }
         interview={ getInterview(state, appointment.interview) }
         interviewers={ getInterviewersForDay(state, state.day) }
+        bookInterview={ bookInterview }
       />
     );
   });
