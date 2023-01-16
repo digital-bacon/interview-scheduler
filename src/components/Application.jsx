@@ -17,7 +17,6 @@ const Application = (props) => {
     interviewers: {}
   });
 
-  console.log(state)
   const setDay = day => setState(prev => ({...prev, day}));
 
   const bookInterview = (id, interview) => {
@@ -31,25 +30,16 @@ const Application = (props) => {
       [id]: appointment
     };
 
+    setState({ ...state, appointments: { ...appointments }});
+
     return axios.put(`/api/appointments/${id}`, { ...appointment })
-      .then(response => {
-        setState({
-          ...state,
-          appointments: { ...appointments }
-        });
-        return response;
-      })
       .then(response => response.data)
       .catch(error => console.log('Error', error.message));
-
   }
 
   const cancelInterview = (id) => {
-    console.log('cancel interview id: ', id);
-
     const appointments = { ...state.appointments }
     appointments[id].interview = null;
-    
     setState(prev => ({ ...prev, appointments }));
     
     return axios.delete(`/api/appointments/${id}`)
