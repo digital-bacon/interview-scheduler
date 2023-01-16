@@ -17,12 +17,9 @@ const Application = (props) => {
     interviewers: {}
   });
 
-  console.log('state = ', state)
-  
   const setDay = day => setState(prev => ({...prev, day}));
 
   const bookInterview = (id, interview) => {
-    console.log(id, interview)
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -33,6 +30,10 @@ const Application = (props) => {
       [id]: appointment
     };
 
+    axios.put(`/api/appointments/${id}`, { ...appointment })
+      .then(response => console.log(response))
+      .catch(error => console.log('Error', error.message));
+      
     setState({
       ...state,
       appointments: { ...appointments }
