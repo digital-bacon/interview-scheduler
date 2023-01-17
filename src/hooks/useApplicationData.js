@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import axios from 'axios';
 
-import selectors from 'helpers/selectors';
+import selectors from '../helpers/selectors';
 
 const useApplicationData = () => {
   const [state, setState] = useState({
@@ -22,16 +22,30 @@ const useApplicationData = () => {
 
     const appointments = {
       ...state.appointments,
-      [id]: appointment
+      [id]: appointment,
     };
 
-    // get the day from appointment id
+    
+    const calculateNewSpots = (action = '', dayIndex = -1) => {
+      const currentSpots = state.days[dayIndex]?.spots || 0;
+      if (action === 'create interview' && currentSpots > 0) {
+        return currentSpots > 0 ? currentSpots - 1 : currentSpots;
+      }
 
-    const totalSpots = selectors.countSpotsForDay(state, state.day);
+      if (action === 'delete interview') {
+        return currentSpots + 1;
+      }
+
+      return currentSpots;
+    }
+    const dayIndex = selectors.getDayIndexByDayName(state, state.day);
+    const newSpots = calculateNewSpots('create interview', dayIndex);
+    const days = [...state.days];
+    days[dayIndex].spots = newSpots;
 
     return axios.put(`/api/appointments/${id}`, { ...appointment })
       .then(response => {
-        setState({ ...state, appointments: { ...appointments }});
+        setState({ ...state, days: [ ...days ], appointments: { ...appointments }});
         return response;
       }
     )
@@ -40,6 +54,13 @@ const useApplicationData = () => {
   const cancelInterview = (id) => {
     const appointments = { ...state.appointments }
     appointments[id].interview = null;
+
+    const dayIndex = selectors.getDayIndexByDayName(state, state.day);
+    const daysFromState = state.days;
+    const currentSpots = daysFromState[dayIndex].spots;
+    const newSpots = currentSpots + 1;
+    const days = [...daysFromState];
+    days[dayIndex].spots = newSpots;
     
     return axios.delete(`/api/appointments/${id}`)
       .then(response => {

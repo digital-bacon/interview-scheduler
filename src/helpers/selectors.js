@@ -15,10 +15,21 @@ const selectors = {
     return dayFromData;
   },
 
-  getDayByAppointmentId(data, appointmentId) {
-    const matchingAppointmentIds = (day) => day?.appointments.find(appointment => appointment === appointmentId);
-    const dayFromAppointmentId = data?.days?.find(day => matchingAppointmentIds(day)) || {};
-    return dayFromAppointmentId;
+  // getDayByAppointmentId(data, appointmentId) {
+  //   const matchingAppointmentIds = (day) => day?.appointments.find(appointment => appointment === appointmentId);
+  //   const dayFromAppointmentId = data?.days?.find(day => matchingAppointmentIds(day)) || {};
+  //   return dayFromAppointmentId;
+  // },
+
+  // getDayIndexByAppointmentId(data, appointmentId) {
+  //   const matchingAppointmentIds = (day) => day?.appointments.find(appointment => appointment === appointmentId);
+  //   const dayIndex = data?.days?.findIndex(day => matchingAppointmentIds(day)) || -1;
+  //   return dayIndex;
+  // },
+  
+  getDayIndexByDayName(data, dayName) {
+    const dayIndex = data.days.findIndex(day => day.name === dayName);
+    return dayIndex;
   },
   
   getAppointmentsForDay(data, dayName) {
@@ -39,11 +50,11 @@ const selectors = {
     return interviewersFromDay;
   },
   
-  countSpotsForDay(data, dayName) {
-    const appointmentsForDay = this.getAppointmentsForDay(data, dayName);
-    const totalSpotsForDay = appointmentsForDay?.filter(appointment => appointment.interview === null).length || 0;
-    return totalSpotsForDay;
-  },
+  // countSpotsForDay(data, dayName) {
+  //   const appointmentsForDay = this.getAppointmentsForDay(data, dayName);
+  //   const totalSpotsForDay = appointmentsForDay?.filter(appointment => appointment.interview === null).length || 0;
+  //   return totalSpotsForDay;
+  // },
 };
 
 export default selectors;
