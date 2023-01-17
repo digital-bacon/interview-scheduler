@@ -14,8 +14,7 @@ const useApplicationData = () => {
 
   const setDay = day => setState(prev => ({...prev, day}));
 
-  const calculateNewSpots = (action = '', dayIndex = -1) => {
-    const currentSpots = state.days[dayIndex]?.spots || 0;
+  const calculateNewSpots = (action = '', currentSpots = 0) => {
     if (action === 'create interview' && currentSpots > 0) {
       return currentSpots > 0 ? currentSpots - 1 : currentSpots;
     }
@@ -39,7 +38,8 @@ const useApplicationData = () => {
     };
 
     const dayIndex = selectors.getDayIndexByDayName(state, state.day);
-    const newSpots = calculateNewSpots('create interview', dayIndex);
+    const currentSpots = state.days[dayIndex]?.spots || 0;
+    const newSpots = calculateNewSpots('create interview', currentSpots);
     const days = [...state.days];
     days[dayIndex].spots = newSpots;
 
@@ -56,7 +56,8 @@ const useApplicationData = () => {
     appointments[id].interview = null;
 
     const dayIndex = selectors.getDayIndexByDayName(state, state.day);
-    const newSpots = calculateNewSpots('delete interview', dayIndex);
+    const currentSpots = state.days[dayIndex]?.spots || 0;
+    const newSpots = calculateNewSpots('delete interview', currentSpots);
     const days = [...state.days];
     days[dayIndex].spots = newSpots;
     
