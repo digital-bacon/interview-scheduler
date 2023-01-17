@@ -1,5 +1,5 @@
 import React from "react";
-import useVisualMode from "hooks/useVisualMode";
+
 import Confirm from "components/Appointment/Confirm";
 import Empty from "components/Appointment/Empty";
 import Error from "components/Appointment/Error";
@@ -7,6 +7,9 @@ import Form from "components/Appointment/Form";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Status from "components/Appointment/Status";
+
+import useVisualMode from "hooks/useVisualMode";
+
 import 'components/Appointment/styles.scss';
 
 const CONFIRM = "CONFIRM";
