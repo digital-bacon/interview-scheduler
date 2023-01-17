@@ -2,6 +2,7 @@ import React from "react";
 import useVisualMode from "hooks/useVisualMode";
 import Confirm from "components/Appointment/Confirm";
 import Empty from "components/Appointment/Empty";
+import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
@@ -11,6 +12,8 @@ import 'components/Appointment/styles.scss';
 const CONFIRM = "CONFIRM";
 const CREATE = "CREATE";
 const DELETING = "DELETING";
+const ERROR_DELETE = "ERROR_DELETE";
+const ERROR_SAVE = "ERROR_SAVE";
 const EDIT = "EDIT";
 const EMPTY = "EMPTY";
 const SAVING = "SAVING";
@@ -39,7 +42,9 @@ const Appointment = ({
 
     bookInterview(id, interview)
       .then(() => transition(SHOW))
-      .catch(error => console.log(error.message));
+      .catch(error => {
+        transition(ERROR_SAVE, true);
+      });
   }
 
   // const edit = (name, interviewer) => {
@@ -56,11 +61,13 @@ const Appointment = ({
   
   const onEdit = () => transition(EDIT);
 
-  const onDelete = () => {
-    transition(DELETING);
+  const destroy = () => {
+    transition(DELETING, true);
     cancelInterview(id)
       .then(() => transition(EMPTY))
-      .catch(error => console.log(error.message));
+      .catch(error => {
+        transition(ERROR_DELETE, true);
+      });
   }
 
   const onConfirm = () => transition(CONFIRM);
@@ -70,10 +77,12 @@ const Appointment = ({
       <Header time={ time }/>
       { mode === DELETING && <Status message={ 'Deleting' } /> }
       { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
+      { mode === ERROR_DELETE && <Error message={ 'Could not delete appointment.' } onClose={ back } /> }
+      { mode === ERROR_SAVE && <Error message={ 'Could not save appointment' } onClose={ back } /> }
       { mode === CONFIRM && (
         <Confirm
           message={ `Delete appointment for ${student} with ${interviewer}?`}
-          onConfirm={ onDelete }
+          onConfirm={ destroy }
           onCancel={ back }
         />
       ) }

@@ -30,21 +30,24 @@ const Application = (props) => {
       [id]: appointment
     };
 
-    setState({ ...state, appointments: { ...appointments }});
-
     return axios.put(`/api/appointments/${id}`, { ...appointment })
-      .then(response => response.data)
-      .catch(error => console.log('Error', error.message));
+      .then(response => {
+        setState({ ...state, appointments: { ...appointments }});
+        return response;
+      }
+    )
   }
 
   const cancelInterview = (id) => {
     const appointments = { ...state.appointments }
     appointments[id].interview = null;
-    setState(prev => ({ ...prev, appointments }));
     
     return axios.delete(`/api/appointments/${id}`)
-      .then(response => response.data)
-      .catch(error => console.log('Error', error.message));
+      .then(response => {
+        setState(prev => ({ ...prev, appointments }));
+        return response;
+      }
+    )
   }
 
   // TODO: abstract this block to a hook named something like useAppData
@@ -71,20 +74,21 @@ const Application = (props) => {
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
-  const appointments = dailyAppointments.map(appointment => {
-  const interview = getInterview(state, appointment.interview);
 
-  return (
-      <Appointment
-        key={ appointment.id }
-        { ...appointment }
-        interview={ interview }
-        interviewers={ interviewers }
-        bookInterview={ bookInterview }
-        cancelInterview={ cancelInterview }
-      />
-    );
-  });
+  const appointments = dailyAppointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
+    return (
+        <Appointment
+          key={ appointment.id }
+          { ...appointment }
+          interview={ interview }
+          interviewers={ interviewers }
+          bookInterview={ bookInterview }
+          cancelInterview={ cancelInterview }
+        />
+      );
+    }
+  );
 
   return (
     <main className="layout">
