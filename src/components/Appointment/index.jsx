@@ -11,6 +11,7 @@ import 'components/Appointment/styles.scss';
 const CONFIRM = "CONFIRM";
 const CREATE = "CREATE";
 const DELETING = "DELETING";
+const EDIT = "EDIT";
 const EMPTY = "EMPTY";
 const SAVING = "SAVING";
 const SHOW = "SHOW";
@@ -35,12 +36,25 @@ const Appointment = ({
       student: name,
       interviewer
     };
+
     bookInterview(id, interview)
       .then(() => transition(SHOW))
       .catch(error => console.log(error.message));
   }
+
+  // const edit = (name, interviewer) => {
+  //   transition(SAVING);
+  //   const interview = {
+  //     student: name,
+  //     interviewer
+  //   };
+
+  //   bookInterview(id, interview)
+  //     .then(() => transition(SHOW))
+  //     .catch(error => console.log(error.message));
+  // }
   
-  const onEdit = () => console.log('onEdit triggered');
+  const onEdit = () => transition(EDIT);
 
   const onDelete = () => {
     transition(DELETING);
@@ -77,6 +91,15 @@ const Appointment = ({
         <Form
           student={ student }
           interviewer={ interviewer }
+          interviewers={ interviewers }
+          onSave={ save }
+          onCancel={ back }
+        />
+      ) }
+      { mode === EDIT && (
+        <Form
+          student={ student }
+          interviewer={ interview?.interviewer?.id }
           interviewers={ interviewers }
           onSave={ save }
           onCancel={ back }
