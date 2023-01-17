@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+
 import axios from 'axios';
+
+import selectors from 'helpers/selectors';
 
 const useApplicationData = () => {
   const [state, setState] = useState({
@@ -21,6 +24,10 @@ const useApplicationData = () => {
       ...state.appointments,
       [id]: appointment
     };
+
+    // get the day from appointment id
+
+    const totalSpots = selectors.countSpotsForDay(state, state.day);
 
     return axios.put(`/api/appointments/${id}`, { ...appointment })
       .then(response => {

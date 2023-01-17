@@ -5,14 +5,20 @@ const selectors = {
     }
   
     const interviewerId = interview.interviewer;
-    const interviewerData = data.interviewers[interviewerId] || {};
+    const interviewerData = data?.interviewers[interviewerId] || {};
     const interviewFromData = { ...interview , interviewer: { ...interviewerData } }
     return interviewFromData;
   },
   
   getDayByName(data, dayName) {
-    const dayFromData = data.days.find(dayData => dayData.name === dayName) || [];
+    const dayFromData = data?.days.find(day => day.name === dayName) || {};
     return dayFromData;
+  },
+
+  getDayByAppointmentId(data, appointmentId) {
+    const matchingAppointmentIds = (day) => day?.appointments.find(appointment => appointment === appointmentId);
+    const dayFromAppointmentId = data?.days?.find(day => matchingAppointmentIds(day)) || {};
+    return dayFromAppointmentId;
   },
   
   getAppointmentsForDay(data, dayName) {
