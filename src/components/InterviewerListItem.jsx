@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
@@ -21,7 +22,7 @@ const InterviewerListItem = ({
     img: {
       'interviewers__item-image': true,
     }
-  }
+  };
 
   const classLi = classNames(classLibrary.li);
   const classImg = classNames(classLibrary.img);
@@ -37,6 +38,14 @@ const InterviewerListItem = ({
       { isSelected && name }
     </li>
   );
-}
+};
+
+InterviewerListItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+  selected: PropTypes.bool.isRequired,
+  setInterviewer: PropTypes.func.isRequired,
+};
 
 export default InterviewerListItem;

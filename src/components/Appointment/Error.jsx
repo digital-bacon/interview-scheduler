@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Error = ({
   message,
@@ -19,6 +20,11 @@ const Error = ({
       />
     </main>
   );
-}
+};
+
+Error.propTypes = {
+  message: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Error;

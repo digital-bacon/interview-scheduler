@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Status = ({ message, ...props }) => {
   return (
@@ -11,6 +12,10 @@ const Status = ({ message, ...props }) => {
       <h1 className="text--semi-bold">{ message }</h1>
     </main>
   );
-}
+};
+
+Status.propTypes = {
+  message: PropTypes.string.isRequired,
+};
 
 export default Status;

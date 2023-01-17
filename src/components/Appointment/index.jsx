@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import Confirm from "components/Appointment/Confirm";
 import Empty from "components/Appointment/Empty";
@@ -119,6 +120,15 @@ const Appointment = ({
       ) }
     </article>
   );
-}
+};
+
+Appointment.propTypes = {
+  id: PropTypes.number,
+  time: PropTypes.string,
+  interview: PropTypes.object,
+  interviewers: PropTypes.array,
+  bookInterview: PropTypes.func,
+  cancelInterview: PropTypes.func,
+};
 
 export default Appointment;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Header = ({ time, ...props }) => {
   return (
@@ -7,6 +8,10 @@ const Header = ({ time, ...props }) => {
       <hr className="appointment__separator" />
     </header>
   );
-}
+};
+
+Header.propTypes = {
+  time: PropTypes.string.isRequired,
+};
 
 export default Header;

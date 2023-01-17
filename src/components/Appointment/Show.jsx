@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Show = ({
   student: studentName,
@@ -34,6 +35,13 @@ const Show = ({
       </section>
     </main>
   );
-}
+};
+
+Show.propTypes = {
+  student: PropTypes.string.isRequired,
+  interviewer: PropTypes.string.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default Show;

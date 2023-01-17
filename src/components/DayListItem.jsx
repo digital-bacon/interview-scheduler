@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import "components/DayListItem.scss";
@@ -16,7 +16,7 @@ const DayListItem = ({
     'day-list__item': true,
     'day-list__item--selected': isSelected,
     'day-list__item--full': isFull,
-  }
+  };
 
   const classDayListItem = classNames(classLibrary);
 
@@ -30,7 +30,7 @@ const DayListItem = ({
     }
 
     return 'no spots remaining';
-  }
+  };
 
   return (
     <li className={ classDayListItem } onClick={ () => setDay(name) }>
@@ -38,6 +38,13 @@ const DayListItem = ({
       <h3 className='text--light'>{ formatSpots() }</h3>
     </li>
    );
-}
+};
+
+DayListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  spots: PropTypes.number.isRequired,
+  setDay: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired,
+};
 
 export default DayListItem;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import "components/Button.scss";
@@ -28,6 +28,13 @@ const Button = ({
       { props.children }
     </button>
    );
-}
+};
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  confirmed: PropTypes.bool,
+  danger: PropTypes.bool,
+};
 
 export default Button;

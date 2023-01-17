@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
@@ -18,12 +19,12 @@ const Form = ({
   const reset = () => {
     setStudentName('');
     setInterviewer(null);
-  }
+  };
 
   const cancel = () => {
     reset();
     onCancel();
-  }
+  };
 
   const handleSubmit = (event) => event.preventDefault();
 
@@ -54,6 +55,14 @@ const Form = ({
       </section>
     </main>
   );
-}
+};
+
+Form.propTypes = {
+  student: PropTypes.string,
+  interviewers: PropTypes.array.isRequired,
+  interviewer: PropTypes.number,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+};
 
 export default Form;
