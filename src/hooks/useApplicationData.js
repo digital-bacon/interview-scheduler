@@ -14,6 +14,19 @@ const useApplicationData = () => {
 
   const setDay = day => setState(prev => ({...prev, day}));
 
+  const calculateNewSpots = (action = '', dayIndex = -1) => {
+    const currentSpots = state.days[dayIndex]?.spots || 0;
+    if (action === 'create interview' && currentSpots > 0) {
+      return currentSpots > 0 ? currentSpots - 1 : currentSpots;
+    }
+
+    if (action === 'delete interview') {
+      return currentSpots + 1;
+    }
+
+    return currentSpots;
+  }
+
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -25,19 +38,6 @@ const useApplicationData = () => {
       [id]: appointment,
     };
 
-    
-    const calculateNewSpots = (action = '', dayIndex = -1) => {
-      const currentSpots = state.days[dayIndex]?.spots || 0;
-      if (action === 'create interview' && currentSpots > 0) {
-        return currentSpots > 0 ? currentSpots - 1 : currentSpots;
-      }
-
-      if (action === 'delete interview') {
-        return currentSpots + 1;
-      }
-
-      return currentSpots;
-    }
     const dayIndex = selectors.getDayIndexByDayName(state, state.day);
     const newSpots = calculateNewSpots('create interview', dayIndex);
     const days = [...state.days];
@@ -56,10 +56,8 @@ const useApplicationData = () => {
     appointments[id].interview = null;
 
     const dayIndex = selectors.getDayIndexByDayName(state, state.day);
-    const daysFromState = state.days;
-    const currentSpots = daysFromState[dayIndex].spots;
-    const newSpots = currentSpots + 1;
-    const days = [...daysFromState];
+    const newSpots = calculateNewSpots('delete interview', dayIndex);
+    const days = [...state.days];
     days[dayIndex].spots = newSpots;
     
     return axios.delete(`/api/appointments/${id}`)
