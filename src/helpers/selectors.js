@@ -50,11 +50,11 @@ const selectors = {
     return interviewersFromDay;
   },
   
-  // countSpotsForDay(data, dayName) {
-  //   const appointmentsForDay = this.getAppointmentsForDay(data, dayName);
-  //   const totalSpotsForDay = appointmentsForDay?.filter(appointment => appointment.interview === null).length || 0;
-  //   return totalSpotsForDay;
-  // },
+  countSpotsForDay(data, dayName) {
+    const appointmentsForDay = this.getAppointmentsForDay(data, dayName);
+    const totalSpotsForDay = appointmentsForDay?.filter(appointment => appointment.interview === null).length || 0;
+    return totalSpotsForDay;
+  },
 };
 
 export default selectors;
