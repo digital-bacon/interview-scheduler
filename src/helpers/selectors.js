@@ -32,6 +32,12 @@ const selectors = {
     const interviewersFromDay = interviewerIdsFromDay?.map(id => data.interviewers[id]) || [];
     return interviewersFromDay;
   },
+  
+  countSpotsForDay(data, dayName) {
+    const appointmentsForDay = this.getAppointmentsForDay(data, dayName);
+    const totalSpotsForDay = appointmentsForDay?.filter(appointment => appointment.interview === null).length || 0;
+    return totalSpotsForDay;
+  },
 };
 
 export default selectors;
