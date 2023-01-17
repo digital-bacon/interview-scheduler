@@ -56,30 +56,30 @@ const state = {
   }
 };
 
-// test("countSpotsForDay returns a number", () => {
-//   const result = selectors.countSpotsForDay(state, "Monday");
-//   expect(result).not.toBeNaN();
-// });
+test("countSpotsForDay returns a number", () => {
+  const result = selectors.countSpotsForDay(state, "Monday");
+  expect(result).not.toBeNaN();
+});
 
-// test("countSpotsForDay returns a number matching the number of slots for that day", () => {
-//   const result = selectors.countSpotsForDay(state, "Tuesday");
-//   expect(result).toEqual(1);
-// });
+test("countSpotsForDay returns a number matching the number of slots for that day", () => {
+  const result = selectors.countSpotsForDay(state, "Tuesday");
+  expect(result).toEqual(1);
+});
 
-// test("countSpotsForDay returns 0 if no slots for that day", () => {
-//   const result = selectors.countSpotsForDay(state, "Wednesday");
-//   expect(result).toEqual(0);
-// });
+test("countSpotsForDay returns 0 if no slots for that day", () => {
+  const result = selectors.countSpotsForDay(state, "Wednesday");
+  expect(result).toEqual(0);
+});
 
-// test("countSpotsForDay returns 0 when the day is not found", () => {
-//   const result = selectors.countSpotsForDay(state, "Sunday");
-//   expect(result).toEqual(0);
-// });
+test("countSpotsForDay returns 0 when the day is not found", () => {
+  const result = selectors.countSpotsForDay(state, "Sunday");
+  expect(result).toEqual(0);
+});
 
-// test("countSpotsForDay returns 0 when the days data is empty", () => {
-//   const result = selectors.countSpotsForDay(state, []);
-//   expect(result).toEqual(0);
-// });
+test("countSpotsForDay returns 0 when the days data is empty", () => {
+  const result = selectors.countSpotsForDay(state, []);
+  expect(result).toEqual(0);
+});
 
 
 // test("getDayByAppointmentId returns an object", () => {
