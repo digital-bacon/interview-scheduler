@@ -7,10 +7,6 @@ import Button from 'components/Button';
 afterEach(cleanup);
 
 describe('Button', () => {
-  it('renders without crashing', () => {
-    const handleClick = jest.fn();
-    render(<Button onClick={handleClick} />);
-  });
 
   it('renders its `children` prop as text', () => {
     const handleClick = jest.fn();

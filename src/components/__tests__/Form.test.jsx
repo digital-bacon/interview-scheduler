@@ -19,18 +19,6 @@ describe('Form', () => {
       avatar: 'https://i.imgur.com/Nmx0Qxo.png'
     }
   ];
-  
-  it('renders without crashing', () => {
-    const onSave = jest.fn();
-    const onCancel = jest.fn();
-    render(
-    <Form
-      interviewers={ interviewers }
-      interviewer={ interviewers[0].id }
-      onSave={ onSave }
-      onCancel={ onCancel }
-    />);
-  });
 
   it('renders without student name if not provided', () => {
     const onSave = jest.fn();
@@ -41,7 +29,7 @@ describe('Form', () => {
       onSave={ onSave }
       onCancel={ onCancel }
     />);
-    
+
     const studentNameInputField = getByPlaceholderText('Enter Student Name');
     expect(studentNameInputField).toHaveValue('');
   });

@@ -7,10 +7,6 @@ import DayListItem from 'components/DayListItem';
 afterEach(cleanup);
 
 describe('DayListItem', () => {
-  it('renders without crashing', () => {
-    const setDay = jest.fn();
-    render(<DayListItem name='Monday' spots={0} setDay={setDay} selected={true} />);
-  });
 
   it('renders "no spots remaining" when there are 0 spots', () => {
     const setDay = jest.fn();
