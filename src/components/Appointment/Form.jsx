@@ -38,6 +38,7 @@ const Form = ({
             type="text"
             placeholder="Enter Student Name"
             value={ student }
+            data-testid={ "student-name-input" }
             onChange={onStudentNameInput}
           />
         </form>
