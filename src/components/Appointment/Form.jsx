@@ -17,6 +17,17 @@ const Form = ({
   const [error, setError] = useState('');
   const onStudentNameInput = (event) => setStudentName(event.target.value);
   
+  const onChange = (event) => {
+    resetError();
+    if (event.target?.name === 'name') {
+      onStudentNameInput(event);
+      return;
+    }
+
+    setInterviewer(event);
+    return;
+  } 
+
   const reset = () => {
     setStudentName('');
     setInterviewer(null);
@@ -27,21 +38,32 @@ const Form = ({
     onCancel();
   };
 
+  const resetError = () => setError('');
+
   const handleSubmit = (event) => event.preventDefault();
+
+  const validationErrors = {
+    empty: {
+      name: 'Student name cannot be blank',
+    },
+    notSelected: {
+      interviewer: 'Please select an interviewer',
+    },
+  }
 
   const validate = () => {
     if (student === '') {
-      setError('Student name cannot be blank');
+      setError(validationErrors.empty.name);
       return;
     }
 
     if (interviewer === null) {
-      setError('Please select an interviewer');
+      setError(validationErrors.notSelected.interviewer);
       return;
     }
   
     onSave(student, interviewer);
-  }
+  };
 
   return (
     <main className='appointment__card appointment__card--create'>
@@ -54,14 +76,14 @@ const Form = ({
             placeholder='Enter Student Name'
             value={ student }
             data-testid={ 'student-name-input' }
-            onChange={ onStudentNameInput }
+            onChange={ onChange }
           />
         </form>
         <section className="appointment__validation">{error}</section>
         <InterviewerList
           interviewers={ interviewers }
           value={ interviewer }
-          onChange={ setInterviewer }
+          onChange={ onChange }
         />
       </section>
       <section className='appointment__card-right'>
