@@ -1,7 +1,7 @@
 describe('Navigation', () => {
   
   beforeEach(() => {
-    cy.visit('api/debug/reset');
+    cy.request('get', '/api/debug/reset');
     cy.visit('/');
   });
 

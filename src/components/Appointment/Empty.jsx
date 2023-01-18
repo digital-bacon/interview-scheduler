@@ -9,6 +9,7 @@ const Empty = ({ onAdd, ...props }) => {
         onClick={ onAdd }
         src='images/add.png'
         alt='Add'
+        data-testid='appointment-add-button'
       />
     </main>
   );
