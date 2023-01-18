@@ -53,25 +53,42 @@ const fixtures = {
   }
 };
 
-const apis = {
-  "api/days": {
+const api = {
+  get: {
+    "api/days": {
     status: 200,
     statusText: "OK",
     data: fixtures.days
+    },
+    "api/appointments": {
+      status: 200,
+      statusText: "OK",
+      data: fixtures.appointments
+    },
+    "api/interviewers": {
+      status: 200,
+      statusText: "OK",
+      data: fixtures.interviewers
+    }
   },
-  "api/appointments": {
-    status: 200,
-    statusText: "OK",
-    data: fixtures.appointments
-  },
-  "api/interviewers": {
-    status: 200,
-    statusText: "OK",
-    data: fixtures.interviewers
+  put: {
+    "api/days": {
+    status: 204,
+    statusText: "No Content",
+    },
+    "api/appointments": {
+      status: 204,
+      statusText: "No Content",
+    },
+    "api/interviewers": {
+      status: 204,
+      statusText: "No Content",
+    }
   }
 };
 
 export default {
   defaults: { baseURL: "" },
-  get: jest.fn(url => Promise.resolve(apis[url]))
+  get: jest.fn(url => Promise.resolve(api.get[url])),
+  put: jest.fn(url => Promise.resolve(api.put[url])),
 };
