@@ -39,8 +39,6 @@ const Appointment = ({
   const { mode, transition, back } = useVisualMode(initialMode);
 
   const save = (studentName, interviewerId) => {
-    console.log('studentName: ', studentName)
-    console.log('interviewerId: ', interviewerId)
     transition(SAVING);
     const interview = {
       student: studentName,
@@ -53,18 +51,6 @@ const Appointment = ({
         transition(ERROR_SAVE, true);
       });
   }
-
-  // const edit = (name, interviewer) => {
-  //   transition(SAVING);
-  //   const interview = {
-  //     student: name,
-  //     interviewer
-  //   };
-
-  //   bookInterview(id, interview)
-  //     .then(() => transition(SHOW))
-  //     .catch(error => console.log(error.message));
-  // }
   
   const onEdit = () => transition(EDIT);
 
