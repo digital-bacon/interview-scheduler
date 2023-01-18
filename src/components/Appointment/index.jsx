@@ -66,7 +66,7 @@ const Appointment = ({
   const onConfirm = () => transition(CONFIRM);
 
   return (
-    <article className='appointment'>
+    <article className='appointment' data-testid='appointment'>
       <Header time={ time }/>
       { mode === DELETING && <Status message={ 'Deleting' } /> }
       { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
