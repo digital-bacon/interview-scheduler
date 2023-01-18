@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import "components/InterviewerListItem.scss";
+import 'components/InterviewerListItem.scss';
 
 const InterviewerListItem = ({
     id,

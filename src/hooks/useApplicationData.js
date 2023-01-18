@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -6,7 +6,7 @@ import selectors from '../helpers/selectors';
 
 const useApplicationData = () => {
   const [state, setState] = useState({
-    day: "Monday",
+    day: 'Monday',
     days: [],
     appointments: {},
     interviewers: {}

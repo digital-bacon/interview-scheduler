@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from "components/Button";
-import InterviewerList from "components/InterviewerList";
+import Button from 'components/Button';
+import InterviewerList from 'components/InterviewerList';
 
 const Form = ({
   student: studentName,
@@ -12,7 +12,7 @@ const Form = ({
   onCancel,
   ...props
 }) => {
-  const [student, setStudentName] = useState(studentName || "");
+  const [student, setStudentName] = useState(studentName || '');
   const [interviewer, setInterviewer] = useState(interviewerId || null);
   const onStudentNameInput = (event) => setStudentName(event.target.value);
   
@@ -29,16 +29,16 @@ const Form = ({
   const handleSubmit = (event) => event.preventDefault();
 
   return (
-    <main className="appointment__card appointment__card--create">
-      <section className="appointment__card-left">
-        <form autoComplete="off" onSubmit={ handleSubmit }>
+    <main className='appointment__card appointment__card--create'>
+      <section className='appointment__card-left'>
+        <form autoComplete='off' onSubmit={ handleSubmit }>
           <input
-            className="appointment__create-input text--semi-bold"
-            name="name"
-            type="text"
-            placeholder="Enter Student Name"
+            className='appointment__create-input text--semi-bold'
+            name='name'
+            type='text'
+            placeholder='Enter Student Name'
             value={ student }
-            data-testid={ "student-name-input" }
+            data-testid={ 'student-name-input' }
             onChange={onStudentNameInput}
           />
         </form>
@@ -48,8 +48,8 @@ const Form = ({
           onChange={ setInterviewer }
         />
       </section>
-      <section className="appointment__card-right">
-        <section className="appointment__actions">
+      <section className='appointment__card-right'>
+        <section className='appointment__actions'>
           <Button danger onClick={ cancel }>Cancel</Button>
           <Button confirm onClick={ () => onSave(student, interviewer) }>Save</Button>
         </section>

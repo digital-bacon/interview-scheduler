@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import DayListItem from "./DayListItem";
+import DayListItem from './DayListItem';
 
 const DayList = ({
   days: daysArray,

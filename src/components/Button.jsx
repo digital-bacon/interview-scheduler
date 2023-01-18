@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import "components/Button.scss";
+import 'components/Button.scss';
 
 const Button = ({
   onClick,

@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import Confirm from "components/Appointment/Confirm";
-import Empty from "components/Appointment/Empty";
-import Error from "components/Appointment/Error";
-import Form from "components/Appointment/Form";
-import Header from "components/Appointment/Header";
-import Show from "components/Appointment/Show";
-import Status from "components/Appointment/Status";
+import Confirm from 'components/Appointment/Confirm';
+import Empty from 'components/Appointment/Empty';
+import Error from 'components/Appointment/Error';
+import Form from 'components/Appointment/Form';
+import Header from 'components/Appointment/Header';
+import Show from 'components/Appointment/Show';
+import Status from 'components/Appointment/Status';
 
-import useVisualMode from "hooks/useVisualMode";
+import useVisualMode from 'hooks/useVisualMode';
 
 import 'components/Appointment/styles.scss';
 
-const CONFIRM = "CONFIRM";
-const CREATE = "CREATE";
-const DELETING = "DELETING";
-const ERROR_DELETE = "ERROR_DELETE";
-const ERROR_SAVE = "ERROR_SAVE";
-const EDIT = "EDIT";
-const EMPTY = "EMPTY";
-const SAVING = "SAVING";
-const SHOW = "SHOW";
+const CONFIRM = 'CONFIRM';
+const CREATE = 'CREATE';
+const DELETING = 'DELETING';
+const ERROR_DELETE = 'ERROR_DELETE';
+const ERROR_SAVE = 'ERROR_SAVE';
+const EDIT = 'EDIT';
+const EMPTY = 'EMPTY';
+const SAVING = 'SAVING';
+const SHOW = 'SHOW';
 
 const Appointment = ({
   id,
@@ -77,7 +77,7 @@ const Appointment = ({
   const onConfirm = () => transition(CONFIRM);
 
   return (
-    <article className="appointment">
+    <article className='appointment'>
       <Header time={ time }/>
       { mode === DELETING && <Status message={ 'Deleting' } /> }
       { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
