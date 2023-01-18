@@ -20,7 +20,7 @@ const DayListItem = ({
 
   const classDayListItem = classNames(classLibrary);
 
-  const formatSpots = () => {
+  const formatSpots = (spots) => {
     if (spots > 1) {
       return `${ spots } spots remaining`
     }
@@ -33,9 +33,13 @@ const DayListItem = ({
   };
 
   return (
-    <li className={ classDayListItem } onClick={ () => setDay(name) }>
+    <li
+      className={ classDayListItem }
+      onClick={ () => setDay(name) }
+      data-testid='day'
+    >
       <h2 className='text--regular'>{ name }</h2>
-      <h3 className='text--light'>{ formatSpots() }</h3>
+      <h3 className='text--light'>{ formatSpots(spots) }</h3>
     </li>
    );
 };
