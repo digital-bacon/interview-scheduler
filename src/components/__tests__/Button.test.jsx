@@ -7,26 +7,31 @@ import Button from "components/Button";
 afterEach(cleanup);
 
 it("renders without crashing", () => {
-  render(<Button />);
+  const handleClick = jest.fn();
+  render(<Button onClick={handleClick} />);
 });
 
 it("renders its `children` prop as text", () => {
-  const { getByText } = render(<Button>Default</Button>);
+  const handleClick = jest.fn();
+  const { getByText } = render(<Button onClick={handleClick}>Default</Button>);
   expect(getByText("Default")).toBeInTheDocument();
 });
 
 it("renders a default button style", () => {
-  const { getByText } = render(<Button>Default</Button>);
+  const handleClick = jest.fn();
+  const { getByText } = render(<Button onClick={handleClick}>Default</Button>);
   expect(getByText("Default")).toHaveClass("button");
 });
 
 it("renders a confirm button", () => {
-  const { getByText } = render(<Button confirm>Confirm</Button>);
+  const handleClick = jest.fn();
+  const { getByText } = render(<Button onClick={handleClick} confirm>Confirm</Button>);
   expect(getByText("Confirm")).toHaveClass("button--confirm");
 });
 
 it("renders a danger button", () => {
-  const { getByText } = render(<Button danger>Danger</Button>);
+  const handleClick = jest.fn();
+  const { getByText } = render(<Button onClick={handleClick} danger>Danger</Button>);
   expect(getByText("Danger")).toHaveClass("button--danger");
 });
 
