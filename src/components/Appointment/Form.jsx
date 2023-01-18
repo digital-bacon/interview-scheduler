@@ -12,8 +12,10 @@ const Form = ({
   onCancel,
   ...props
 }) => {
-  const [student, setStudentName] = useState(studentName || '');
-  const [interviewer, setInterviewer] = useState(interviewerId || null);
+  const initialValues = { name: studentName, interviewer: interviewerId };
+  
+  const [student, setStudentName] = useState(initialValues.name || '');
+  const [interviewer, setInterviewer] = useState(initialValues.interviewer || null);
   const [error, setError] = useState('');
   const onStudentNameInput = (event) => setStudentName(event.target.value);
   
