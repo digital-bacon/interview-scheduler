@@ -49,4 +49,26 @@ describe('Appointments', () => {
 
   });
 
+  it('should cancel an interview', () => {
+
+    cy.get('[data-testid=show-button-trash]')
+      .click({ force: true })
+
+    cy.get('button.button--danger')
+      .contains('Confirm')
+      .click();
+    
+    cy.get('.appointment__card--status')
+      .contains('Deleting')
+      .should('exist');
+
+    cy.get('.appointment__card--status')
+      .contains('Deleting')
+      .should('not.exist');
+
+    cy.contains('.appointment__card--show', 'Archie Cohen')
+      .should('not.exist');
+
+  });
+
 });
