@@ -32,16 +32,19 @@ const Appointment = ({
   cancelInterview,
   ...props
 }) => {
-  const student = interview?.student;
-  const interviewer = interview?.interviewer.name;
+  const student = interview?.student || '';
+  const interviewerName = interview?.interviewer?.name || '';
+  const interviewerId = interview?.interviewer?.id || null;
   const initialMode = interview ? SHOW : EMPTY;
   const { mode, transition, back } = useVisualMode(initialMode);
 
-  const save = (name, interviewer) => {
+  const save = (studentName, interviewerId) => {
+    console.log('studentName: ', studentName)
+    console.log('interviewerId: ', interviewerId)
     transition(SAVING);
     const interview = {
-      student: name,
-      interviewer
+      student: studentName,
+      interviewer: interviewerId
     };
 
     bookInterview(id, interview)
@@ -85,7 +88,7 @@ const Appointment = ({
       { mode === ERROR_SAVE && <Error message={ 'Could not save appointment' } onClose={ back } /> }
       { mode === CONFIRM && (
         <Confirm
-          message={ `Delete appointment for ${student} with ${interviewer}?`}
+          message={ `Delete appointment for ${student} with ${interviewerName}?`}
           onConfirm={ destroy }
           onCancel={ back }
         />
@@ -94,7 +97,7 @@ const Appointment = ({
       { mode === SHOW && (
         <Show
           student={ student }
-          interviewer={ interviewer }
+          interviewer={ interviewerName }
           id={id}
           onEdit={ onEdit }
           onDelete={ onConfirm }
@@ -103,7 +106,6 @@ const Appointment = ({
       { mode === CREATE && (
         <Form
           student={ student }
-          interviewer={ interviewer }
           interviewers={ interviewers }
           onSave={ save }
           onCancel={ back }
@@ -112,7 +114,7 @@ const Appointment = ({
       { mode === EDIT && (
         <Form
           student={ student }
-          interviewer={ interview?.interviewer?.id }
+          interviewer={ interviewerId }
           interviewers={ interviewers }
           onSave={ save }
           onCancel={ back }
