@@ -24,12 +24,14 @@ const Show = ({
             onClick={ onEdit }
             src='images/edit.png'
             alt='Edit'
+            data-testid='show-button-edit'
           />
           <img
             className='appointment__actions-button'
             onClick={ onDelete }
             src='images/trash.png'
             alt='Delete'
+            data-testid='show-button-trash'
           />
         </section>
       </section>
