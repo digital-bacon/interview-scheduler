@@ -71,10 +71,6 @@ const apis = {
   }
 };
 
-// export default {
-//   get: jest.fn(url => url ? Promise.resolve(apis.api) : undefined)
-// }
-
 export default {
   defaults: { baseURL: "" },
   get: jest.fn(url => Promise.resolve(apis[url]))
