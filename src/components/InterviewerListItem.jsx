@@ -29,11 +29,16 @@ const InterviewerListItem = ({
 
   
   return (
-    <li className={ classLi } onClick={ () => setInterviewer(id) }>
+    <li className={ classLi }>
       <img
         className={ classImg }
         src={ avatar }
         alt={ name }
+        data-name='interviewer'
+        data-value={ id }
+        data-type='number'
+        data-form='false'
+        onClick={ setInterviewer }
       />
       { isSelected && name }
     </li>

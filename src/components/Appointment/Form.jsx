@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import useFormData from 'hooks/useFormData';
 
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
@@ -12,37 +14,8 @@ const Form = ({
   onCancel,
   ...props
 }) => {
+
   const initialValues = { name: studentName, interviewer: interviewerId };
-  
-  const [student, setStudentName] = useState(initialValues.name || '');
-  const [interviewer, setInterviewer] = useState(initialValues.interviewer || null);
-  const [error, setError] = useState('');
-  const onStudentNameInput = (event) => setStudentName(event.target.value);
-  
-  const onChange = (event) => {
-    resetError();
-    if (event.target?.name === 'name') {
-      onStudentNameInput(event);
-      return;
-    }
-
-    setInterviewer(event);
-    return;
-  } 
-
-  const reset = () => {
-    setStudentName('');
-    setInterviewer(null);
-  };
-
-  const cancel = () => {
-    reset();
-    onCancel();
-  };
-
-  const resetError = () => setError('');
-
-  const handleSubmit = (event) => event.preventDefault();
 
   const validationErrors = {
     empty: {
@@ -51,21 +24,16 @@ const Form = ({
     notSelected: {
       interviewer: 'Please select an interviewer',
     },
-  }
-
-  const validate = () => {
-    if (student === '') {
-      setError(validationErrors.empty.name);
-      return;
-    }
-
-    if (interviewer === null) {
-      setError(validationErrors.notSelected.interviewer);
-      return;
-    }
-  
-    onSave(student, interviewer);
   };
+
+  const {
+    formData,
+    handleSubmit,
+    cancel,
+    validate,
+    onChange,
+    error
+  } = useFormData(initialValues, validationErrors, onSave, onCancel);
 
   return (
     <main className='appointment__card appointment__card--create'>
@@ -73,36 +41,25 @@ const Form = ({
         <form autoComplete='off' onSubmit={ handleSubmit }>
           <input
             className='appointment__create-input text--semi-bold'
-            name='name'
+            value={ formData.name }
             type='text'
             placeholder='Enter Student Name'
-            value={ student }
             data-testid='student-name-input'
+            name='name'
             onChange={ onChange }
           />
         </form>
         <section className="appointment__validation">{error}</section>
         <InterviewerList
           interviewers={ interviewers }
-          value={ interviewer }
+          value={ formData.interviewer }
           onChange={ onChange }
         />
       </section>
       <section className='appointment__card-right'>
         <section className='appointment__actions'>
-          <Button
-            danger
-            onClick={ cancel }
-          >
-            Cancel
-          </Button>
-
-          <Button
-            confirm
-            onClick={ validate }
-          >
-            Save
-          </Button>
+          <Button danger onClick={ cancel }>Cancel</Button>
+          <Button confirm onClick={ validate }>Save</Button>
         </section>
       </section>
     </main>
