@@ -31,7 +31,7 @@ const Application = (props) => {
   });
 
   return (
-    <main className="layout">
+    <main className="layout" data-testid="main">
       <section className="sidebar">
         <img
           className="sidebar--centered"
