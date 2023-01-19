@@ -163,11 +163,11 @@ describe('Application', () => {
       getByText(appointment, 'Delete appointment for Archie Cohen with Tori Malcolm?')
     ).toBeInTheDocument();
 
-    // axios.delete.mockRejectedValueOnce();
+    axios.delete.mockRejectedValueOnce();
 
-    // fireEvent.click(queryByText(appointment, 'Confirm'));
+    fireEvent.click(queryByText(appointment, 'Confirm'));
 
-    // await waitForElement(() => queryByText(container, 'Could not delete appointment'));
+    await waitForElement(() => queryByText(container, 'Could not delete appointment'));
 
   });
 });
