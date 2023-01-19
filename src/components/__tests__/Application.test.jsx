@@ -148,8 +148,26 @@ describe('Application', () => {
 
   });
 
-  // it('shows the save error when failing to delete an appointment', () => {
-  //   axios.delete.mockRejectedValueOnce();
-  // });
+  it('shows the delete error when failing to delete an appointment', async () => { 
+    const { container } = render(<Application />);
+  
+    await waitForElement(() => getByText(container, 'Archie Cohen'));
+  
+    const appointment = getAllByTestId(container, 'appointment').find(
+      appointment => queryByText(appointment, 'Archie Cohen')
+    );
+  
+    fireEvent.click(queryByAltText(appointment, 'Delete'));
+  
+    expect(
+      getByText(appointment, 'Delete appointment for Archie Cohen with Tori Malcolm?')
+    ).toBeInTheDocument();
 
+    // axios.delete.mockRejectedValueOnce();
+
+    // fireEvent.click(queryByText(appointment, 'Confirm'));
+
+    // await waitForElement(() => queryByText(container, 'Could not delete appointment'));
+
+  });
 });

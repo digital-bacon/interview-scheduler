@@ -70,7 +70,7 @@ const Appointment = ({
       <Header time={ time }/>
       { mode === DELETING && <Status message={ 'Deleting' } /> }
       { mode === EMPTY && <Empty onAdd={() => transition(CREATE)} /> }
-      { mode === ERROR_DELETE && <Error message={ 'Could not delete appointment.' } onClose={ back } /> }
+      { mode === ERROR_DELETE && <Error message={ 'Could not delete appointment' } onClose={ back } /> }
       { mode === ERROR_SAVE && <Error message={ 'Could not save appointment' } onClose={ back } /> }
       { mode === CONFIRM && (
         <Confirm
