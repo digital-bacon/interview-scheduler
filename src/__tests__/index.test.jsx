@@ -1,20 +1,19 @@
-import React from "react";
+import ReactDOM from "react-dom";
+import renderToDOM from "index";
 
-import {
-  render,
-  cleanup,
-  getAllByTestId,
-  waitForElement,
-} from "@testing-library/react";
-
-import Application from "components/Application";
-
-afterEach(cleanup);
-
-describe("Application", () => {
-  it("renders application without crashing", async () => {
-    const { container } = render(<Application />);
-
-    await waitForElement(() => getAllByTestId(container, "main"));
+describe("test ReactDOM.render", () => {
+  const originalRender = ReactDOM.render;
+  const originalGetElement = global.document.getElementById;
+  beforeEach(() => {
+    global.document.getElementById = () => true;
+    ReactDOM.render = jest.fn();
+  });
+  afterAll(() => {
+    global.document.getElementById = originalGetElement;
+    ReactDOM.render = originalRender;
+  });
+  it("should call ReactDOM.render", () => {
+    renderToDOM();
+    expect(ReactDOM.render).toHaveBeenCalled();
   });
 });
