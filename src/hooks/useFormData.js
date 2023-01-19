@@ -2,14 +2,14 @@ import { useState } from "react";
 
 const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
   const [formData, setFormData] = useState(initialValues);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const validate = () => {
-    if (formData.name === '') {
+    if (formData.name === "") {
       setError(validationErrors.empty.name);
       return;
     }
-    
+
     if (formData.interviewer === null) {
       setError(validationErrors.notSelected.interviewer);
       return;
@@ -17,7 +17,7 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
 
     onSave(formData.name, formData.interviewer);
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     validate();
@@ -32,34 +32,34 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
 
   const getDataFrom = (target) => {
     const initial = {
-      name: '',
-      value: '',
+      name: "",
+      value: "",
     };
 
-    if (typeof target === 'undefined') {
+    if (typeof target === "undefined") {
       return initial;
-    };
-    
-    const dataSource = target.getAttribute('data-source');
-    if (dataSource === 'input') {
+    }
+
+    const dataSource = target.getAttribute("data-source");
+    if (dataSource === "input") {
       const dataFromInput = getDataFromInput(target);
       const data = { ...initial, ...dataFromInput };
       return data;
-    };
+    }
 
-    if (dataSource === 'element') {
+    if (dataSource === "element") {
       const dataFromAttributes = getDataFromAttributes(target);
       const data = { ...initial, ...dataFromAttributes };
       return data;
-    };
+    }
 
     return initial;
   };
 
   const getDataFromInput = (input) => {
     const data = {
-      name: '',
-      value: '',
+      name: "",
+      value: "",
     };
 
     data.name = input && input.name ? input.name : data.name;
@@ -70,22 +70,22 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
 
   const getDataFromAttributes = (element) => {
     const data = {
-      name: '',
-      value: '',
+      name: "",
+      value: "",
     };
 
-    const dataName = element.getAttribute('data-name');
-    const dataValue = element.getAttribute('data-value');
+    const dataName = element.getAttribute("data-name");
+    const dataValue = element.getAttribute("data-value");
     data.name = dataName ? dataName : data.name;
     data.value = dataValue ? dataValue : data.value;
 
-    const dataType = element.getAttribute('data-type');
-    if (dataType === 'number') {
+    const dataType = element.getAttribute("data-type");
+    if (dataType === "number") {
       data.value = Number(data.value);
     }
 
     return data;
-  }
+  };
 
   const cancel = () => {
     resetForm();
@@ -97,9 +97,9 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
     setFormData({ ...initialValues });
   };
 
-  const resetError = () => setError('');
+  const resetError = () => setError("");
 
   return { formData, handleSubmit, cancel, validate, onChange, error };
-}
+};
 
 export default useFormData;

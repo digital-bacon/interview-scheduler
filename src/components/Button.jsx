@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import 'components/Button.scss';
+import "components/Button.scss";
 
 const Button = ({
   onClick,
@@ -12,20 +12,16 @@ const Button = ({
   ...props
 }) => {
   const classLibrary = {
-    'button': true,
-    'button--confirm': isConfirm,
-    'button--danger': isDanger,
+    button: true,
+    "button--confirm": isConfirm,
+    "button--danger": isDanger,
   };
 
-  const buttonClass = classNames(classLibrary)
+  const buttonClass = classNames(classLibrary);
 
   return (
-    <button
-      className={ buttonClass }
-      onClick={ onClick }
-      disabled={ isDisabled }
-    >
-      { props.children }
+    <button className={buttonClass} onClick={onClick} disabled={isDisabled}>
+      {props.children}
     </button>
   );
 };

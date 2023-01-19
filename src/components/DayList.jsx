@@ -1,31 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import DayListItem from './DayListItem';
+import DayListItem from "./DayListItem";
 
-const DayList = ({
-  days: daysArray,
-  value,
-  onChange,
-  ...props
-}) => {
-  const days = daysArray.map(day => {
+const DayList = ({ days: daysArray, value, onChange, ...props }) => {
+  const days = daysArray.map((day) => {
     return (
       <DayListItem
-        key={ day.id }
-        name={ day.name }
-        spots={ day.spots }
-        selected={ day.name === value }
-        setDay={ onChange }
+        key={day.id}
+        name={day.name}
+        spots={day.spots}
+        selected={day.name === value}
+        setDay={onChange}
       />
     );
   });
 
-  return (
-    <ul>
-      { days }
-    </ul>
-  );
+  return <ul>{days}</ul>;
 };
 
 DayList.propTypes = {

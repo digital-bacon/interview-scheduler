@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import 'components/InterviewerList.scss';
+import "components/InterviewerList.scss";
 
-import InterviewerListItem from './InterviewerListItem';
+import InterviewerListItem from "./InterviewerListItem";
 
 const InterviewerList = ({
   interviewers: interviewersArray,
@@ -11,24 +11,24 @@ const InterviewerList = ({
   onChange,
   ...props
 }) => {
-  const interviewers = interviewersArray.map(interviewer => {
+  const interviewers = interviewersArray.map((interviewer) => {
     return (
-        <InterviewerListItem
-          key={ interviewer.id }
-          name={ interviewer.name }
-          avatar={ interviewer.avatar }
-          selected={ currentInterviewerId === interviewer.id ? true : false }
-          id={ interviewer.id }
-          setInterviewer={ onChange }
-        />
-      );
+      <InterviewerListItem
+        key={interviewer.id}
+        name={interviewer.name}
+        avatar={interviewer.avatar}
+        selected={currentInterviewerId === interviewer.id ? true : false}
+        id={interviewer.id}
+        setInterviewer={onChange}
+      />
+    );
   });
 
   return (
-    <section className='interviewers'>
-      <h4 className='interviewers__header text--light'>Interviewer</h4>
-      <ul className='interviewers__list' data-testid='interviewers-list'>
-        { interviewers }
+    <section className="interviewers">
+      <h4 className="interviewers__header text--light">Interviewer</h4>
+      <ul className="interviewers__list" data-testid="interviewers-list">
+        {interviewers}
       </ul>
     </section>
   );

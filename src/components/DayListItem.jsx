@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import 'components/DayListItem.scss';
+import "components/DayListItem.scss";
 
 const DayListItem = ({
   name,
@@ -13,33 +13,33 @@ const DayListItem = ({
 }) => {
   const isFull = spots === 0 ? true : false;
   const classLibrary = {
-    'day-list__item': true,
-    'day-list__item--selected': isSelected,
-    'day-list__item--full': isFull,
+    "day-list__item": true,
+    "day-list__item--selected": isSelected,
+    "day-list__item--full": isFull,
   };
 
   const classDayListItem = classNames(classLibrary);
 
   const formatSpots = (spots) => {
     if (spots > 1) {
-      return `${ spots } spots remaining`
+      return `${spots} spots remaining`;
     }
 
     if (spots === 1) {
-      return `${ spots } spot remaining`
+      return `${spots} spot remaining`;
     }
 
-    return 'no spots remaining';
+    return "no spots remaining";
   };
 
   return (
     <li
-      className={ classDayListItem }
-      onClick={ () => setDay(name) }
-      data-testid='day'
+      className={classDayListItem}
+      onClick={() => setDay(name)}
+      data-testid="day"
     >
-      <h2 className='text--regular'>{ name }</h2>
-      <h3 className='text--light'>{ formatSpots(spots) }</h3>
+      <h2 className="text--regular">{name}</h2>
+      <h3 className="text--light">{formatSpots(spots)}</h3>
     </li>
   );
 };

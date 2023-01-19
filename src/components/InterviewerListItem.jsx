@@ -1,46 +1,45 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import classNames from 'classnames';
+import classNames from "classnames";
 
-import 'components/InterviewerListItem.scss';
+import "components/InterviewerListItem.scss";
 
 const InterviewerListItem = ({
-    id,
-    name,
-    avatar,
-    selected: isSelected,
-    setInterviewer,
-    ...props
+  id,
+  name,
+  avatar,
+  selected: isSelected,
+  setInterviewer,
+  ...props
 }) => {
   const classLibrary = {
     li: {
-      'interviewers__item': true,
-      'interviewers__item--selected': isSelected,
+      interviewers__item: true,
+      "interviewers__item--selected": isSelected,
     },
 
     img: {
-      'interviewers__item-image': true,
-    }
+      "interviewers__item-image": true,
+    },
   };
 
   const classLi = classNames(classLibrary.li);
   const classImg = classNames(classLibrary.img);
 
-  
   return (
-    <li className={ classLi }>
+    <li className={classLi}>
       <img
-        className={ classImg }
-        src={ avatar }
-        alt={ name }
-        data-name='interviewer'
-        data-value={ id }
-        data-type='number'
-        data-source='element'
-        onClick={ setInterviewer }
+        className={classImg}
+        src={avatar}
+        alt={name}
+        data-name="interviewer"
+        data-value={id}
+        data-type="number"
+        data-source="element"
+        onClick={setInterviewer}
       />
-      { isSelected && name }
+      {isSelected && name}
     </li>
   );
 };
