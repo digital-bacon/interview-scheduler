@@ -8,11 +8,12 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
   // const [interviewer, setInterviewer] = useState(initialValues.interviewer || null);
 
   const validate = () => {
+    
     if (formData.name === '') {
       setError(validationErrors.empty.name);
       return;
     }
-
+    
     if (formData.interviewer === null) {
       setError(validationErrors.notSelected.interviewer);
       return;
@@ -49,14 +50,14 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
     setFormData({ ...formData, [input.name]: input.value });
   };
 
-  const reset = () => {
-    resetError();
-    setFormData(initialValues);
+  const cancel = () => {
+    resetForm();
+    onCancel();
   };
 
-  const cancel = () => {
-    reset();
-    onCancel();
+  const resetForm = () => {
+    resetError();
+    setFormData({ ...initialValues });
   };
 
   const resetError = () => setError('');

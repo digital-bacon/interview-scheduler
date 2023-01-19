@@ -15,7 +15,10 @@ const Form = ({
   ...props
 }) => {
 
-  const initialValues = { name: studentName, interviewer: interviewerId };
+  const initialValues = {
+    name: studentName || '',
+    interviewer: interviewerId || null
+  };
 
   const validationErrors = {
     empty: {
