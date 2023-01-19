@@ -19,7 +19,10 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+    
     validate();
   };
 
