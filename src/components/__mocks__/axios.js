@@ -84,6 +84,20 @@ const api = {
       status: 204,
       statusText: "No Content",
     }
+  },
+  delete: {
+    "api/days": {
+    status: 204,
+    statusText: "No Content",
+    },
+    "api/appointments": {
+      status: 204,
+      statusText: "No Content",
+    },
+    "api/interviewers": {
+      status: 204,
+      statusText: "No Content",
+    }
   }
 };
 
@@ -91,4 +105,5 @@ export default {
   defaults: { baseURL: "" },
   get: jest.fn(url => Promise.resolve(api.get[url])),
   put: jest.fn(url => Promise.resolve(api.put[url])),
+  delete: jest.fn(url => Promise.resolve(api.delete[url])),
 };
