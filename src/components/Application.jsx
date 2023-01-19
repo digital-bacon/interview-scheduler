@@ -1,10 +1,10 @@
 import React from "react";
 
-import DayList from "./DayList";
-import Appointment from "./Appointment";
-
 import selectors from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
+
+import DayList from "./DayList";
+import Appointment from "./Appointment";
 
 import "components/Application.scss";
 
