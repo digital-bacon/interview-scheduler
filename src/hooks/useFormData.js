@@ -56,7 +56,7 @@ const useFormData = (initialFormData, validationErrors, onSave, onCancel) => {
     resetError();
     const target = event.target;
     const newData = getDataFrom(target);
-    setFormData(prev => prev = { ...prev, [newData.name]: newData.value });
+    setFormData((prev) => (prev = { ...prev, [newData.name]: newData.value }));
   };
 
   /**
@@ -150,12 +150,13 @@ const useFormData = (initialFormData, validationErrors, onSave, onCancel) => {
   /**
    * Resets formData state to initial state
    */
-  const resetFormData = () => setFormData(prev => prev = { ...initialFormData });
+  const resetFormData = () =>
+    setFormData((prev) => (prev = { ...initialFormData }));
 
   /**
    * Resets error state to initial state
    */
-  const resetError = () => setError(prev => prev = initialError);
+  const resetError = () => setError((prev) => (prev = initialError));
 
   return { formData, handleSubmit, cancel, validate, onChange, error };
 };
