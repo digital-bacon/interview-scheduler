@@ -20,7 +20,7 @@ const useApplicationData = () => {
     const newDay = { ...dayObj, spots };
     const newDays = state.days.map(day => day.name === state.day ? { ...newDay } : day);
     return newDays;
-  }
+  };
 
   const bookInterview = (id, interview) => {
     const appointment = { ...state.appointments[id] };
@@ -33,14 +33,14 @@ const useApplicationData = () => {
 
     const days = updateSpots(newState);
 
-    setState({ ...newState, days })
+    setState({ ...newState, days });
 
     if (interview) {
       return axios.put(`/api/appointments/${id}`, { ...appointment });
     }
 
     return axios.delete(`/api/appointments/${id}`);
-  }
+  };
 
   const cancelInterview = (id) => bookInterview(id, null);
 

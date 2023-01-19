@@ -3,8 +3,6 @@ import React, { Fragment }from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import 'index.scss';
-
 import Button from 'components/Button';
 import DayListItem from 'components/DayListItem';
 import DayList from 'components/DayList';
@@ -18,6 +16,8 @@ import Confirm from 'components/Appointment/Confirm';
 import Status from 'components/Appointment/Status';
 import Error from 'components/Appointment/Error';
 import Form from 'components/Appointment/Form';
+
+import 'index.scss';
 
 storiesOf('Button', module)
   .addParameters({
@@ -52,11 +52,13 @@ const days = [
     name: 'Monday',
     spots: 2,
   },
+  
   {
     id: 2,
     name: 'Tuesday',
     spots: 5,
   },
+  
   {
     id: 3,
     name: 'Wednesday',
@@ -69,13 +71,13 @@ storiesOf('DayList', module)
     backgrounds: [{ name: 'dark', value: '#222f3e', default: true }],
   })
   .add('Monday', () => (
-    <DayList days={days} day={'Monday'} onChange={action('setDay')} />
+    <DayList days={days} value={'Monday'} onChange={action('setDay')} />
   ))
   .add('Tuesday', () => (
-    <DayList days={days} day={'Tuesday'} onChange={action('setDay')} />
+    <DayList days={days} value={'Tuesday'} onChange={action('setDay')} />
   ))
   .add('Wednesday', () => (
-      <DayList days={days} day={'Wednesday'} onChange={action('setDay')} />
+      <DayList days={days} value={'Wednesday'} onChange={action('setDay')} />
   ));
 
   const interviewer = {
@@ -108,9 +110,9 @@ storiesOf('InterviewerListItem', module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      onChange={() => action('setInterviewer')}
+      setInterviewer={() => action('onChange')}
     />
-  ));
+));
 
 const interviewers = [
   { id: 1, name: 'Sylvia Palmer', avatar: 'https://i.imgur.com/LpaY82x.png' },
@@ -140,7 +142,7 @@ storiesOf('InterviewerList', module)
       interviewers={interviewers}
       setInterviewer={action('setInterviewer')}
     />
-  ));
+));
 
 storiesOf('Appointment', module)
   .addParameters({
@@ -203,4 +205,4 @@ storiesOf('Appointment', module)
       />
       <Appointment time='5pm' />
     </Fragment>
-  ));
+));

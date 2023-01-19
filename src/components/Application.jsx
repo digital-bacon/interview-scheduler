@@ -23,17 +23,16 @@ const Application = (props) => {
   const appointments = dailyAppointments.map(appointment => {
     const interview = selectors.getInterview(state, appointment.interview);
     return (
-        <Appointment
-          key={ appointment.id }
-          { ...appointment }
-          interview={ interview }
-          interviewers={ interviewers }
-          bookInterview={ bookInterview }
-          cancelInterview={ cancelInterview }
-        />
-      );
-    }
-  );
+      <Appointment
+        key={ appointment.id }
+        { ...appointment }
+        interview={ interview }
+        interviewers={ interviewers }
+        bookInterview={ bookInterview }
+        cancelInterview={ cancelInterview }
+      />
+    );
+  });
 
   return (
     <main className='layout'>

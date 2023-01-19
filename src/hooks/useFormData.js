@@ -5,7 +5,6 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
   const [error, setError] = useState('');
 
   const validate = () => {
-    
     if (formData.name === '') {
       setError(validationErrors.empty.name);
       return;
@@ -31,18 +30,18 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
       name: target.name,
       value: target.value,
       type: null,
-    }
+    };
 
     const isInputElement = target.getAttribute('data-form');
     if (isInputElement === 'false') {
       input.value = target.getAttribute('data-value');
       input.name = target.getAttribute('data-name');
       input.type = target.getAttribute('data-type');
-    }
+    };
 
     if (input.type === 'number') {
       input.value = Number(input.value);
-    }
+    };
 
     setFormData({ ...formData, [input.name]: input.value });
   };
@@ -60,7 +59,6 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
   const resetError = () => setError('');
 
   return { formData, handleSubmit, cancel, validate, onChange, error };
-
 }
 
 export default useFormData;

@@ -15,7 +15,7 @@ const Button = ({
     'button': true,
     'button--confirm': isConfirm,
     'button--danger': isDanger,
-  }
+  };
 
   const buttonClass = classNames(classLibrary)
 
@@ -27,7 +27,7 @@ const Button = ({
     >
       { props.children }
     </button>
-   );
+  );
 };
 
 Button.propTypes = {

@@ -17,7 +17,7 @@ const useVisualMode = (initial) => {
   const addToHistory = (newMode, replaceLastMode = false, newBaseHistoryArray) => {
     if (replaceLastMode) {
       return replaceLastHistory(newMode);
-    }
+    };
     
     const historyBuffer = !newBaseHistoryArray ? copyHistory() : [...newBaseHistoryArray];
     const isUniqueNewMode = isUniqueNewElement(newMode, historyBuffer);
@@ -28,15 +28,15 @@ const useVisualMode = (initial) => {
   const replaceLastHistory = (newMode) => {
     const historyBuffer = copyHistory(dropLastIndex);
     addToHistory(newMode, false, historyBuffer);
-  }
+  };
 
   const getPreviousMode = () => {
     if (history.length >= 2) {
       return history[history.length - 2];
-    }
+    };
     
     return history[history.length - 1];
-  }
+  };
 
   const copyHistory = (callback) => callback ? callback([...history]) : [...history];
 

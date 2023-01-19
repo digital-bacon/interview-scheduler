@@ -25,7 +25,7 @@ const DayList = ({
     <ul>
       { days }
     </ul>
-   );
+  );
 };
 
 DayList.propTypes = {

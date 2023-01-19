@@ -8,7 +8,6 @@ describe('Appointments', () => {
   });
 
   it('should book an interview', () => {
-
     cy.get('[data-testid=appointment-add-button]')
       .first()
       .click();
@@ -29,7 +28,6 @@ describe('Appointments', () => {
   });
 
   it('should edit an interview', () => {
-
     cy.get('[data-testid=show-button-edit]')
       .click({ force: true })
 
@@ -50,7 +48,6 @@ describe('Appointments', () => {
   });
 
   it('should cancel an interview', () => {
-
     cy.get('[data-testid=show-button-trash]')
       .click({ force: true })
 

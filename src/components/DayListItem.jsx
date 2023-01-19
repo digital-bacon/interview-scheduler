@@ -41,7 +41,7 @@ const DayListItem = ({
       <h2 className='text--regular'>{ name }</h2>
       <h3 className='text--light'>{ formatSpots(spots) }</h3>
     </li>
-   );
+  );
 };
 
 DayListItem.propTypes = {

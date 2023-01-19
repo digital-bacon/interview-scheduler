@@ -56,6 +56,7 @@ const state = {
   }
 };
 
+
 describe('countSpotsForDay', () => {
   test('countSpotsForDay returns a number', () => {
     const result = selectors.countSpotsForDay(state, 'Monday');
@@ -81,29 +82,9 @@ describe('countSpotsForDay', () => {
     const result = selectors.countSpotsForDay(state, []);
     expect(result).toEqual(0);
   });
+  
 });
 
-// describe('getDayByAppointmentId', () => {
-//   test('getDayByAppointmentId returns an object', () => {
-//     const result = selectors.getDayByAppointmentId(state, 3);
-//     expect(typeof result === 'object' && !Array.isArray(result));
-//   });
-
-//   test('getDayByAppointmentId returns an object with the correct day data', () => {
-//     const result = selectors.getDayByAppointmentId(state, state.appointments['6'].id);
-//     expect(result).toEqual(state.days[2]);
-//   });
-
-//   test('getDayByAppointmentId returns an empty object when appointments data is empty', () => {
-//     const result = selectors.getDayByAppointmentId({ appointments: [] }, 3);
-//     expect(result).toEqual({});
-//   });
-
-//   test('getDayByAppointmentId returns an empty object when the appointment id is not found', () => {
-//     const result = selectors.getDayByAppointmentId(state, 12);
-//     expect(result).toEqual({});
-//   });
-// });
 
 describe('getInterviewersForDay', () => {
   test('getInterviewersForDay returns an array', () => {
@@ -130,7 +111,9 @@ describe('getInterviewersForDay', () => {
     const result = selectors.getInterviewersForDay(state, 'Sunday');
     expect(result.length).toEqual(0);
   });
+
 });
+
 
 describe('getInterview', () => {
   test('getInterview returns an object with the interviewer data', () => {
@@ -146,7 +129,9 @@ describe('getInterview', () => {
       })
     );
   });
+
 });
+
 
 describe('getAppointmentsForDay', () => {
   test('getAppointmentsForDay returns an array', () => {
@@ -179,4 +164,5 @@ describe('getAppointmentsForDay', () => {
     const result = selectors.getInterview(state, state.appointments['2'].interview);
     expect(result).toBeNull();
   });
+
 });

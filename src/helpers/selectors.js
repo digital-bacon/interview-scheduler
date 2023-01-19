@@ -1,4 +1,14 @@
 const selectors = {
+  getDayByName(data, dayName) {
+    const dayFromData = data?.days.find(day => day.name === dayName) || {};
+    return dayFromData;
+  },
+  
+  getDayIndexByDayName(data, dayName) {
+    const dayIndex = data.days.findIndex(day => day.name === dayName);
+    return dayIndex;
+  },
+  
   getInterview(data, interview) {
     if (!interview) {
       return null;
@@ -6,30 +16,8 @@ const selectors = {
   
     const interviewerId = interview.interviewer;
     const interviewerData = data?.interviewers[interviewerId] || {};
-    const interviewFromData = { ...interview , interviewer: { ...interviewerData } }
+    const interviewFromData = { ...interview , interviewer: { ...interviewerData } };
     return interviewFromData;
-  },
-  
-  getDayByName(data, dayName) {
-    const dayFromData = data?.days.find(day => day.name === dayName) || {};
-    return dayFromData;
-  },
-
-  // getDayByAppointmentId(data, appointmentId) {
-  //   const matchingAppointmentIds = (day) => day?.appointments.find(appointment => appointment === appointmentId);
-  //   const dayFromAppointmentId = data?.days?.find(day => matchingAppointmentIds(day)) || {};
-  //   return dayFromAppointmentId;
-  // },
-
-  // getDayIndexByAppointmentId(data, appointmentId) {
-  //   const matchingAppointmentIds = (day) => day?.appointments.find(appointment => appointment === appointmentId);
-  //   const dayIndex = data?.days?.findIndex(day => matchingAppointmentIds(day)) || -1;
-  //   return dayIndex;
-  // },
-  
-  getDayIndexByDayName(data, dayName) {
-    const dayIndex = data.days.findIndex(day => day.name === dayName);
-    return dayIndex;
   },
   
   getAppointmentsForDay(data, dayName) {
