@@ -48,6 +48,7 @@ const Form = ({
             type='text'
             placeholder='Enter Student Name'
             data-testid='student-name-input'
+            data-source='input'
             name='name'
             onChange={ onChange }
           />
