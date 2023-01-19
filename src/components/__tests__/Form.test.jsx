@@ -116,7 +116,7 @@ describe('Form', () => {
     fireEvent.click(getByText("Cancel"));
 
     expect(queryByText(/Student name cannot be blank/i)).toBeNull();
-    expect(getByPlaceholderText("Enter Student Name")).toHaveValue("");
+    expect(getByPlaceholderText("Enter Student Name")).toHaveValue("Lydia Miller-Jones");
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
 

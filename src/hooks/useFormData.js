@@ -4,9 +4,6 @@ const useFormData = (initialValues, validationErrors, onSave, onCancel) => {
   const [formData, setFormData] = useState(initialValues);
   const [error, setError] = useState('');
 
-  // const [student, setStudentName] = useState(initialValues.name || '');
-  // const [interviewer, setInterviewer] = useState(initialValues.interviewer || null);
-
   const validate = () => {
     
     if (formData.name === '') {
