@@ -20,9 +20,9 @@ const useApplicationData = () => {
 
 	/**
 	 * Update state to the current day
-	 * @param {String} day - the day name to set. Case sensitive. Only weekday names
+	 * @param {String} dayName - the day name to set. Case sensitive. Only weekday names
 	 */
-	const setDay = (day) => setState((prev) => ({ ...prev, day }));
+	const setDay = (dayName) => setState((prev) => ({ ...prev, day: dayName }));
 
 	/**
 	 * Creates a copy of the the current day object from state and updates the available interview
