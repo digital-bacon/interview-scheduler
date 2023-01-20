@@ -6,12 +6,12 @@ import { useState } from "react";
  * @param {Object} validationData - pre-configured error messages to use in the error state
  * @param {Function} onSave - callback that receives data from formData state
  * @param {Function} onCancel - callback to be called when cancel() is executed
- * @returns {Object}
- * @property {object} formData - the current formData state
- * @property {object} error - the current error state
- * @property {function} handleSubmit - called when form is submitted
- * @property {function} cancel - called when form is cancelled
- * @property {onchange} cancel - called when form is changed
+ * @returns {Object} Object
+ * @property {Object} formData - the current formData state
+ * @property {Object} error - the current error state
+ * @property {Function} handleSubmit - called when form is submitted
+ * @property {Function} cancel - called when form is cancelled
+ * @property {Function} onchange - called when form is changed
  */
 const useFormData = (initialFormData, validationData, onSave, onCancel) => {
 	const initialError = "";
