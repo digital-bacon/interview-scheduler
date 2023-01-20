@@ -19,17 +19,19 @@ const Form = ({
 		interviewer: interviewerId || null,
 	};
 
-	const validationErrors = {
-		empty: {
-			name: "Student name cannot be blank",
+	const validationData = {
+		name: {
+			required: true,
+			requiredError: "Student name cannot be blank",
 		},
-		notSelected: {
-			interviewer: "Please select an interviewer",
+		interviewer: {
+			required: true,
+			requiredError: "Please select an interviewer",
 		},
 	};
 
 	const { formData, handleSubmit, cancel, validate, onChange, error } =
-		useFormData(initialValues, validationErrors, onSave, onCancel);
+		useFormData(initialValues, validationData, onSave, onCancel);
 
 	return (
 		<main className="appointment__card appointment__card--create">

@@ -3,7 +3,7 @@ import { useState } from "react";
 /**
  * React hook to retrieve data from form and manage form state
  * @param {Object} initialFormData - pre-configured in the component
- * @param {Object} validationErrors - pre-configured error messages to use in the error state
+ * @param {Object} validationData - pre-configured error messages to use in the error state
  * @param {Function} onSave - callback that receives data from formData state
  * @param {Function} onCancel - callback to be called when cancel() is executed
  * @returns {Object} with properties:
@@ -14,7 +14,7 @@ import { useState } from "react";
  *  onChange (Function) ||
  *  error (Object) the current error state
  */
-const useFormData = (initialFormData, validationErrors, onSave, onCancel) => {
+const useFormData = (initialFormData, validationData, onSave, onCancel) => {
 	const initialError = "";
 	const [formData, setFormData] = useState(initialFormData || {});
 	const [error, setError] = useState(initialError);
@@ -23,14 +23,11 @@ const useFormData = (initialFormData, validationErrors, onSave, onCancel) => {
 	 * Validates the form data and conditionally sets error or formData state
 	 */
 	const validate = () => {
-		if (formData.name === "") {
-			setError(validationErrors.empty.name);
-			return;
-		}
-
-		if (formData.interviewer === null) {
-			setError(validationErrors.notSelected.interviewer);
-			return;
+		for (const propertyName in formData) {
+			if (validationData?.[propertyName]?.required && !formData[propertyName]) {
+				setError(validationData[propertyName].requiredError);
+				return;
+			}
 		}
 
 		onSave(formData);
