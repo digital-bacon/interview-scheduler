@@ -45,18 +45,18 @@ const useApplicationData = () => {
 	/**
 	 * Controls interview assignment and removal in appointment slots by updating the
 	 * app state and api to reflect any change requested
-	 * @param {Number} id - the appointment id that is to receive the interview change
-	 * @param {Object|null} interview - will update the current interview data for this
+	 * @param {Number} appointmentId - the appointment id that is to receive the interview change
+	 * @param {Object|null} interviewObject - will update the current interview data for this
 	 * appointment to match. When provided a null value, the current interview for this
 	 * appointment slot will be deleted
 	 * @returns {Object} a promise from the api request
 	 */
-	const bookInterview = (id, interview) => {
-		const appointment = { ...state.appointments[id] };
-		appointment.interview = interview;
+	const bookInterview = (appointmentId, interviewObject = null) => {
+		const appointment = { ...state.appointments[appointmentId] };
+		appointment.interview = interviewObject;
 
 		const appointments = { ...state.appointments };
-		appointments[id] = appointment;
+		appointments[appointmentId] = appointment;
 
 		const newState = { ...state, appointments };
 
@@ -64,19 +64,21 @@ const useApplicationData = () => {
 
 		setState({ ...newState, days });
 
-		if (interview) {
-			return axios.put(`/api/appointments/${id}`, { ...appointment });
+		if (interviewObject) {
+			return axios.put(`/api/appointments/${appointmentId}`, {
+				...appointment,
+			});
 		}
 
-		return axios.delete(`/api/appointments/${id}`);
+		return axios.delete(`/api/appointments/${appointmentId}`);
 	};
 
 	/**
 	 * Called when an interview is to be cancelled (deleted)
-	 * @param {Number} id - the appointment id that is to receive the interview change
+	 * @param {Number} appointmentId - the appointment id that is to receive the interview change
 	 * @returns {Object} a promise from the api delete request
 	 */
-	const cancelInterview = (id) => bookInterview(id, null);
+	const cancelInterview = (appointmentId) => bookInterview(appointmentId, null);
 
 	/**
 	 * React hook that will run once only, after the Application component is mounted for the first time
