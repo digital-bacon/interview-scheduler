@@ -6,9 +6,12 @@ import { countAvailableInterviewSpotsForDay } from "../helpers/selectors";
  * React hook to manage application data and state
  * @returns {Object} Object
  * @property {Object} state - the current state
- * @property {Function} setDay - called when the currently selected day is changed to update the current state
- * @property {Function} bookInterview - called to apply interview changes to the state and api
- * @property {Function} cancelInterview - called when an interview is cancelled/deleted
+ * @property {Function} setDay - called when the currently selected day is
+ * changed to update the current state
+ * @property {Function} bookInterview - called to apply interview changes to the
+ * state and api
+ * @property {Function} cancelInterview - called when an interview is cancelled
+ * or deleted
  */
 const useApplicationData = () => {
 	const [state, setState] = useState({
@@ -20,17 +23,18 @@ const useApplicationData = () => {
 
 	/**
 	 * Update state to the current day
-	 * @param {String} dayName - the day name to set. Case sensitive. Only weekday names
+	 * @param {String} dayName - the day name to set. Case sensitive. Only
+	 * weekday names
 	 */
 	const setDay = (dayName) => setState((prev) => ({ ...prev, day: dayName }));
 
 	/**
-	 * Creates a copy of the the current day object from state and updates the available interview
-	 * spots in the copy. Returns an array with the updated day object, and all other days from state
+	 * Creates a copy of the the current day object from state and updates the
+	 * available interview spots in the copy. Returns an array with the updated
+	 * day object, and all other days from state
 	 * @param {Object} state - the current state object
-	 * @returns {Object} newDays object
-	 * @property {Array} [day] - an Array containing day objects from state, by reference. The current
-	 * day object is replaced with the updated day object created by this function
+	 * @returns {Array} array [objects from state by reference]. The current day
+	 * object is replaced with the updated day object created by this function
 	 */
 	const updateSpots = (state) => {
 		const dayObj = state.days.find((day) => day.name === state.day);
@@ -43,12 +47,13 @@ const useApplicationData = () => {
 	};
 
 	/**
-	 * Controls interview assignment and removal in appointment slots by updating the
-	 * app state and api to reflect any change requested
-	 * @param {Number} appointmentId - the appointment id that is to receive the interview change
-	 * @param {Object|null} interviewObject - will update the current interview data for this
-	 * appointment to match. When provided a null value, the current interview for this
-	 * appointment slot will be deleted
+	 * Controls interview assignment and removal in appointment slots by updating
+	 * the app state and api to reflect any change requested
+	 * @param {Number} appointmentId - the appointment id that is to receive the
+	 * interview change
+	 * @param {Object|null} interviewObject - will update the current interview
+	 * data for this appointment to match. When provided a null value, the current
+	 * interview for this appointment slot will be deleted
 	 * @returns {Object} a promise from the api request
 	 */
 	const bookInterview = (appointmentId, interviewObject = null) => {
@@ -75,13 +80,15 @@ const useApplicationData = () => {
 
 	/**
 	 * Called when an interview is to be cancelled (deleted)
-	 * @param {Number} appointmentId - the appointment id that is to receive the interview change
+	 * @param {Number} appointmentId - the appointment id that is to receive the
+	 * interview change
 	 * @returns {Object} a promise from the api delete request
 	 */
 	const cancelInterview = (appointmentId) => bookInterview(appointmentId, null);
 
 	/**
-	 * React hook that will run once only, after the Application component is mounted for the first time
+	 * React hook that will run once only, after the Application component is
+	 * mounted for the first time
 	 */
 	useEffect(() => {
 		const apis = {

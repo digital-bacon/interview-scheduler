@@ -15,7 +15,8 @@ const useVisualMode = (initial) => {
 	/**
 	 * Applies a new mode to history and mode states
 	 * @param {String} newMode
-	 * @param {Boolean} [replaceLastMode=false] - if true, the last mode in history state will be replaced
+	 * @param {Boolean} [replaceLastMode=false] - if true, the last mode in
+	 * history state will be replaced
 	 */
 	const transition = (newMode, replaceLastMode = false) => {
 		addToHistory(newMode, replaceLastMode);
@@ -33,8 +34,10 @@ const useVisualMode = (initial) => {
 	/**
 	 * Adds a new mode to history state
 	 * @param {String} newMode
-	 * @param {Boolean} [replaceLastMode=false] - if true, the last mode in history state will be replaced
-	 * @param {Array} [newBaseHistoryArray] - optional array to replace the exisitng history state before adding the new mode
+	 * @param {Boolean} [replaceLastMode=false] - if true, the last mode in
+	 * history state will be replaced
+	 * @param {Array} [newBaseHistoryArray] - optional array to replace the
+	 * exisitng history state before adding the new mode
 	 * @returns
 	 */
 	const addToHistory = (
@@ -79,15 +82,18 @@ const useVisualMode = (initial) => {
 
 	/**
 	 * Verbose function to create a shallow copy of the history state array
-	 * @param {Function} [callback] - called if provided with copied history array as an argument
-	 * @returns {(Array|*)} return value from provided callback. If no callback provided, then
+	 * @param {Function} [callback] - called if provided with copied history array
+	 * as an argument
+	 * @returns {(Array|*)} return value from provided callback. If no callback
+	 * provided, then
 	 * returns copied history array
 	 */
 	const copyHistory = (callback) =>
 		callback ? callback([...history]) : [...history];
 
 	/**
-	 * Verbose function to return a shallow copy of an array without the last element
+	 * Verbose function to return a shallow copy of an array without the last
+	 * element
 	 * @param {Array} array - the array to copy
 	 * @returns shallow copy of an array without the last element
 	 */

@@ -3,7 +3,8 @@ import { useState } from "react";
 /**
  * React hook to retrieve data from form and manage form state
  * @param {Object} initialFormData - pre-configured in the component
- * @param {Object} validationData - pre-configured error messages to use in the error state
+ * @param {Object} validationData - pre-configured error messages to use in the
+ * error state
  * @param {Function} onSave - callback that receives data from formData state
  * @param {Function} onCancel - callback to be called when cancel() is executed
  * @returns {Object} Object
@@ -88,7 +89,8 @@ const useFormData = (initialFormData, validationData, onSave, onCancel) => {
 
 	/**
 	 * Gets data from an input element
-	 * @param {Object} input - can be any input element with attributes name and value
+	 * @param {Object} input - can be any input element with attributes name and
+	 * value
 	 * @returns {Object} with the data retrieved as properties name and value
 	 */
 	const getDataFromInput = (input) => {
@@ -105,7 +107,8 @@ const useFormData = (initialFormData, validationData, onSave, onCancel) => {
 
 	/**
 	 * Gets data from an html element with data attributes
-	 * @param {Object} input - can be any element with attributes data-name and data-value
+	 * @param {Object} input - can be any element with attributes data-name and
+	 * data-value
 	 * @returns {Object} with the data retrieved as properties name and value
 	 */
 	const getDataFromAttributes = (element) => {
@@ -136,7 +139,8 @@ const useFormData = (initialFormData, validationData, onSave, onCancel) => {
 	};
 
 	/**
-	 * Calls the resetError callback to clear error state, and sets the formData state back to initial values
+	 * Calls the resetError callback to clear error state, and sets the formData
+	 * state back to initial values
 	 */
 	const resetForm = () => {
 		resetError();
