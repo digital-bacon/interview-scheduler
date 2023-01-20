@@ -158,7 +158,14 @@ const useFormData = (initialFormData, validationErrors, onSave, onCancel) => {
 	 */
 	const resetError = () => setError((prev) => (prev = initialError));
 
-	return { formData, handleSubmit, cancel, validate, onChange, error };
+	return {
+		formData,
+		error,
+		handleSubmit,
+		cancel,
+		validate,
+		onChange,
+	};
 };
 
 export default useFormData;

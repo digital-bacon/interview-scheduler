@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-import selectors from "../helpers/selectors";
+import { countAvailableInterviewSpotsForDay } from "../helpers/selectors";
 
 const useApplicationData = () => {
 	const [state, setState] = useState({
@@ -16,7 +16,7 @@ const useApplicationData = () => {
 
 	const updateSpots = (state) => {
 		const dayObj = state.days.find((day) => day.name === state.day);
-		const spots = selectors.countSpotsForDay(state, state.day);
+		const spots = countAvailableInterviewSpotsForDay(state, state.day);
 		const newDay = { ...dayObj, spots };
 		const newDays = state.days.map((day) =>
 			day.name === state.day ? { ...newDay } : day

@@ -1,6 +1,10 @@
 import React from "react";
 
-import selectors from "helpers/selectors";
+import {
+	getAppointmentsForDay,
+	getInterviewersForDay,
+	getInterview,
+} from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
 import DayList from "./DayList";
@@ -12,12 +16,12 @@ const Application = (props) => {
 	const { state, setDay, bookInterview, cancelInterview } =
 		useApplicationData();
 
-	const dailyAppointments = selectors.getAppointmentsForDay(state, state.day);
+	const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-	const interviewers = selectors.getInterviewersForDay(state, state.day);
+	const interviewers = getInterviewersForDay(state, state.day);
 
 	const appointments = dailyAppointments.map((appointment) => {
-		const interview = selectors.getInterview(state, appointment.interview);
+		const interview = getInterview(state, appointment.interview);
 		return (
 			<Appointment
 				key={appointment.id}
