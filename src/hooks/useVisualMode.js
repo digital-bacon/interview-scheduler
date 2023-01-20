@@ -3,10 +3,10 @@ import { useState } from "react";
 /**
  * React hook to retrieve data from form and manage form state
  * @param {String} initial - from app state
- * @returns {Object} with properties:
- *  mode (String) the current mode state ||
- *  transition(Function) ||
- *	back(Function)
+ * @returns {Object} Object
+ * @property {String} formData - the current mode state
+ * @property {Function} transition - called when transitioning to a new mode
+ * @property {Function} back - called when transitioning to the previous mode
  */
 const useVisualMode = (initial) => {
 	const [mode, setMode] = useState(initial || "");
