@@ -33,7 +33,7 @@ const useFormData = (initialFormData, validationErrors, onSave, onCancel) => {
 			return;
 		}
 
-		onSave(formData.name, formData.interviewer);
+		onSave(formData);
 	};
 
 	/**

@@ -39,12 +39,15 @@ const Appointment = ({
 	const initialMode = interview ? SHOW : defaultMode;
 	const { mode, transition, back } = useVisualMode(initialMode);
 
-	const save = (studentName, interviewerId) => {
+	const save = (interviewData) => {
 		transition(SAVING);
 		const interview = {
-			student: studentName,
-			interviewer: interviewerId,
+			student: "",
+			interviewer: 0,
 		};
+
+		interview.student = interviewData?.name || interview.student;
+		interview.interviewer = interviewData?.interviewer || interview.interviewer;
 
 		bookInterview(id, interview)
 			.then(() => transition(SHOW))
