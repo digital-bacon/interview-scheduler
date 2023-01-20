@@ -35,7 +35,6 @@ const InterviewerListItem = ({
 				data-name="interviewer"
 				data-value={id}
 				data-type="number"
-				data-source="element"
 				onClick={setInterviewer}
 			/>
 			{isSelected && name}

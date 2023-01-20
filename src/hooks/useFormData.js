@@ -71,14 +71,13 @@ const useFormData = (initialFormData, validationData, onSave, onCancel) => {
 			return initial;
 		}
 
-		const dataSource = target.getAttribute("data-source");
-		if (dataSource === "input") {
+		if (target.name && target.value) {
 			const dataFromInput = getDataFromInput(target);
 			const data = { ...initial, ...dataFromInput };
 			return data;
 		}
 
-		if (dataSource === "element") {
+		if (target.getAttribute("data-name") && target.getAttribute("data-value")) {
 			const dataFromAttributes = getDataFromAttributes(target);
 			const data = { ...initial, ...dataFromAttributes };
 			return data;
