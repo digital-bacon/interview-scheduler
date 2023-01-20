@@ -108,8 +108,17 @@ const useApplicationData = () => {
 				const interviewers = all[2].data;
 				setState((prev) => ({ ...prev, days, appointments, interviewers }));
 				const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
-				socket.onopen = (event) => {
-					socket.send("test message");
+				socket.onmessage = (event) => {
+					const data = JSON.parse(event.data);
+					console.log(data);
+
+					if (typeof data === "object" && data.type === "SET_INTERVIEW") {
+						console.log("SET INTERVIEW");
+						const appointmentId = data.id;
+						const interviewObject = data.interview;
+						console.log("appointmentId = ", appointmentId);
+						console.log("interviewObject = ", interviewObject);
+					}
 				};
 			})
 			.catch((error) => console.log(error.message));
