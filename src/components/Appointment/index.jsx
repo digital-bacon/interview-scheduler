@@ -35,7 +35,8 @@ const Appointment = ({
 	const student = interview?.student || "";
 	const interviewerName = interview?.interviewer?.name || "";
 	const interviewerId = interview?.interviewer?.id || null;
-	const initialMode = interview ? SHOW : EMPTY;
+	const defaultMode = EMPTY;
+	const initialMode = interview ? SHOW : defaultMode;
 	const { mode, transition, back } = useVisualMode(initialMode);
 
 	const save = (studentName, interviewerId) => {
