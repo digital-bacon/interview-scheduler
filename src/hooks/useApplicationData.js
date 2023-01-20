@@ -107,6 +107,10 @@ const useApplicationData = () => {
 				const appointments = all[1].data;
 				const interviewers = all[2].data;
 				setState((prev) => ({ ...prev, days, appointments, interviewers }));
+				const socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+				socket.onopen = (event) => {
+					socket.send("test message");
+				};
 			})
 			.catch((error) => console.log(error.message));
 	}, []);
