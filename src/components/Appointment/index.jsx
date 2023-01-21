@@ -24,12 +24,12 @@ const SAVING = "SAVING";
 const SHOW = "SHOW";
 
 const Appointment = ({
-	id,
-	time,
-	interview,
-	interviewers,
-	bookInterview,
-	cancelInterview,
+	bookInterview, // func: updates an appointment with a new interview
+	cancelInterview, // func: cancels an interview
+	id, // number: the appointment id from state
+	interview, // object: a copy of state.interview data
+	interviewers, // array: a copy of state.interviewers data
+	time, // string: the appointment time from state
 	...props
 }) => {
 	const student = interview?.student || "";
@@ -128,12 +128,12 @@ const Appointment = ({
 };
 
 Appointment.propTypes = {
-	id: PropTypes.number,
-	time: PropTypes.string,
-	interview: PropTypes.object,
-	interviewers: PropTypes.array,
 	bookInterview: PropTypes.func,
 	cancelInterview: PropTypes.func,
+	id: PropTypes.number,
+	interview: PropTypes.object,
+	interviewers: PropTypes.array,
+	time: PropTypes.string,
 };
 
 export default Appointment;

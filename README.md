@@ -24,6 +24,27 @@ npm run storybook
 
 ## React Components
 
+<dl>
+<dt><a href="#components_Button">Button</a></dt>
+<dd><p><code>src/components/Button.jsx</code></dd>
+<dt><a href="#components_DayList">DayList</a></dt>
+<dd><p><code>src/components/DayList.jsx</code></dd>
+<dt><a href="#components_DayListItem">DayListItem</a></dt>
+<dd><p><code>src/components/DayListItem.jsx</code></dd>
+<dt><a href="#components_InterviewerList">InterviewerList</a></dt>
+<dd><p><code>src/components/InterviewerList.jsx</code></dd>
+<dt><a href="#components_InterviewerListItem">InterviewerListItem</a></dt>
+<dd><p><code>src/components/InterviewerListItem.jsx</code></dd>
+<dt><a href="#components__Appointment">Appointment</a></dt>
+<dd><p>Depending on the task the user is completing, will display a different child component.</p>
+<p><code>src/components/Appointment</code></p></dd>
+<dt>Appointment  ⇒ <a href="#components__Appointment_Confirm">Confirm</a></dt>
+<dd><p><code>src/components/Appointment/Confirm</code></p>
+</dd>
+</dl>
+
+<a name="components_Button"></a>
+
 ### Button
 
 ```js
@@ -34,6 +55,7 @@ npm run storybook
   onClick   // func.isRequired: callback to execute when button is clicked
 />
 ```
+<a name="components_DayList"></a>
 
 ### DayList
 
@@ -44,6 +66,7 @@ npm run storybook
   value     // string.isRequired: state.day value
 />
 ```
+<a name="components_DayListItem"></a>
 
 ### DayListItem
 
@@ -55,6 +78,7 @@ npm run storybook
   spots     // number.isRequired: total interview spots available for the day
 />
 ```
+<a name="components_InterviewerList"></a>
 
 ### InterviewerList
 
@@ -65,6 +89,7 @@ npm run storybook
 	value         // number: callback to execute when an interviewer is clicked
 />
 ```
+<a name="components_InterviewerListItem"></a>
 
 ### InterviewerListItem
 
@@ -75,5 +100,18 @@ npm run storybook
   name            // string.isRequired: name of interviewer 
   selected        // bool.isRequired: Boolean: if true, use class "interviewers__item--selected"
   setInterviewer  // func.isRequired: callback to execute when an interviewer is clicked
+/>
+```
+
+### Appointment
+
+```js
+<Appointment
+  bookInterview   // func: updates an appointment with a new interview
+  cancelInterview // func: cancels an interview
+  id              // number: the appointment id from state
+  interview       // object: a copy of state.interview data
+  interviewers    // array: a copy of state.interviewers data
+  time            // string: the appointment time from state
 />
 ```
