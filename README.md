@@ -38,7 +38,7 @@ npm run storybook
 <dt><a href="#components__Appointment">Appointment</a></dt>
 <dd><p>Depending on the task the user is completing, will display a different child component.</p>
 <p><code>src/components/Appointment</code></p></dd>
-<dt>Appointment  ⇒ <a href="#components__Appointment_Confirm">Confirm</a></dt>
+<dt>Appointment ⇒ <a href="#components__Appointment_Confirm">Confirm</a></dt>
 <dd><p><code>src/components/Appointment/Confirm</code></p>
 </dd>
 </dl>
@@ -85,8 +85,8 @@ npm run storybook
 ```js
 <InterviewerList
   interviewers  // array.isRequired: copy of state.interviewers
-	onChange      // func.isRequired: id of currently interviewer
-	value         // number: callback to execute when an interviewer is clicked
+  onChange      // func.isRequired: id of currently interviewer
+  value         // number: callback to execute when an interviewer is clicked
 />
 ```
 <a name="components_InterviewerListItem"></a>
@@ -102,6 +102,7 @@ npm run storybook
   setInterviewer  // func.isRequired: callback to execute when an interviewer is clicked
 />
 ```
+<a name="components__Appointment"></a>
 
 ### Appointment
 
@@ -113,5 +114,16 @@ npm run storybook
   interview       // object: a copy of state.interview data
   interviewers    // array: a copy of state.interviewers data
   time            // string: the appointment time from state
+/>
+```
+<a name="components__Appointment_Confirm"></a>
+
+### Appointment ⇒ Confirm
+
+```js
+<Confirm
+  message     //string: message to display to user
+  onConfirm   //func: callback to execute on confirm button click
+  onCancel    //func: callback to execute on cancel button click  
 />
 ```
