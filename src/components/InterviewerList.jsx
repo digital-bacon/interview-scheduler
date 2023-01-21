@@ -7,8 +7,8 @@ import "components/InterviewerList.scss";
 
 const InterviewerList = ({
 	interviewers: interviewersArray, // array.isRequired: list of interviewers
-	value: currentInterviewerId, // func.isRequired: id of currently interviewer
-	onChange, // number: callback passed to <InterviewerListItem>
+	onChange, // func.isRequired: callback passed to <InterviewerListItem>
+	value: currentInterviewerId, // number: id of currently interviewer
 	...props
 }) => {
 	const interviewers = interviewersArray.map((interviewer) => {
@@ -36,8 +36,8 @@ const InterviewerList = ({
 
 InterviewerList.propTypes = {
 	interviewers: PropTypes.array.isRequired,
-	value: PropTypes.number,
 	onChange: PropTypes.func.isRequired,
+	value: PropTypes.number,
 };
 
 export default InterviewerList;
