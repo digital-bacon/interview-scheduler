@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 
 import DayListItem from "./DayListItem";
 
-const DayList = ({ days: daysArray, value, onChange, ...props }) => {
+const DayList = ({
+	days: daysArray, // Array: state.days by reference
+	onChange, // Function: callback to execute when a day is clicked
+	value, // String: state.day value
+	...props // Any: all other props not documented here
+}) => {
 	const days = daysArray.map((day) => {
 		return (
 			<DayListItem
@@ -21,8 +26,8 @@ const DayList = ({ days: daysArray, value, onChange, ...props }) => {
 
 DayList.propTypes = {
 	days: PropTypes.array.isRequired,
-	value: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired,
 };
 
 export default DayList;

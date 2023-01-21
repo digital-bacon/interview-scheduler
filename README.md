@@ -34,3 +34,13 @@ npm run storybook
   onClick   // func.isRequired: callback to execute when button is clicked
 />
 ```
+
+### DayList
+
+```javascript
+<DayList
+  days      // array.isRequired: state.days by reference
+  onChange  // func.isRequired: callback to execute when a day is clicked
+  value     // string.isRequired: state.day value
+/>
+```

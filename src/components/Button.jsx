@@ -27,10 +27,10 @@ const Button = ({
 };
 
 Button.propTypes = {
-	onClick: PropTypes.func.isRequired,
-	disabled: PropTypes.bool,
 	confirmed: PropTypes.bool,
 	danger: PropTypes.bool,
+	disabled: PropTypes.bool,
+	onClick: PropTypes.func.isRequired,
 };
 
 export default Button;
