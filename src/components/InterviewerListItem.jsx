@@ -5,11 +5,11 @@ import classNames from "classnames";
 import "components/InterviewerListItem.scss";
 
 const InterviewerListItem = ({
-	avatar, // String: interviewer image url
-	id, // Number: interviewer id
-	name, // String: name of interviewer
-	selected: isSelected, // Boolean: when true, use class "interviewers__item--selected"
-	setInterviewer, // Function: callback to execute when an interviewer is clicked
+	avatar, // string: interviewer image url
+	id, // number: interviewer id
+	name, // string: name of interviewer
+	selected: isSelected, // bool: when true, use class "interviewers__item--selected"
+	setInterviewer, // func: callback to execute when an interviewer is clicked
 	...props
 }) => {
 	const classLibrary = {
