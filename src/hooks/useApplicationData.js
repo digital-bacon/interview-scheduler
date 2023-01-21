@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import axios from "axios";
+
 import { countAvailableInterviewSpotsForDay } from "../helpers/selectors";
 
 /**
@@ -21,7 +22,7 @@ const useApplicationData = () => {
 		interviewers: {},
 	});
 	const socket = useRef(null);
-
+	const newInterviewRef = useRef(null);
 	/**
 	 * Creates a copy of the the current day object from state and updates the
 	 * available interview spots in the copy. Returns an array with the updated
@@ -40,10 +41,19 @@ const useApplicationData = () => {
 		return newDays;
 	}, []);
 
+	/**
+	 * Receives new interview data for an appointment slot and updates state to
+	 * match
+	 * @param {Number} appointmentId - the appointment id that is to receive the
+	 * interview change
+	 * @param {Object|null} interview - will update the current interview
+	 * data for this appointment to match. When provided a null value, the current
+	 * interview for this appointment will be removed
+	 */
 	const setInterviewState = useCallback(
-		(appointmentId, interviewObject) => {
+		(appointmentId, interview = null) => {
 			const appointment = { ...state.appointments[appointmentId] };
-			appointment.interview = interviewObject;
+			appointment.interview = interview;
 
 			const appointments = { ...state.appointments };
 			appointments[appointmentId] = appointment;
@@ -74,29 +84,22 @@ const useApplicationData = () => {
 	const setDay = (dayName) => setState((prev) => ({ ...prev, day: dayName }));
 
 	/**
-	 * Controls interview assignment and removal in appointment slots by updating
-	 * the app state and api to reflect any change requested
+	 * Controls interview assignment and removal in appointment slots by calling
+	 * an update to the app state and then sending an update to the api
 	 * @param {Number} appointmentId - the appointment id that is to receive the
 	 * interview change
-	 * @param {Object|null} interviewObject - will update the current interview
+	 * @param {Object|null} interview - will update the current interview
 	 * data for this appointment to match. When provided a null value, the current
 	 * interview for this appointment slot will be deleted
 	 * @returns {Object} a promise from the api request
 	 */
-	const bookInterview = (appointmentId, interviewObject = null) => {
+	const bookInterview = (appointmentId, interview = null) => {
+		setInterviewState(appointmentId, interview);
+
 		const appointment = { ...state.appointments[appointmentId] };
-		appointment.interview = interviewObject;
+		appointment.interview = interview;
 
-		const appointments = { ...state.appointments };
-		appointments[appointmentId] = appointment;
-
-		const newState = { ...state, appointments };
-
-		const days = updateSpots(newState);
-
-		setState({ ...newState, days });
-
-		if (interviewObject) {
+		if (interview) {
 			return axios.put(`/api/appointments/${appointmentId}`, {
 				...appointment,
 			});
@@ -151,11 +154,14 @@ const useApplicationData = () => {
 		};
 
 		return () => {
-			socketCurrent.close();
+			if (socketCurrent.readyState === 1) {
+				socketCurrent.close();
+			}
 		};
 	}, [setInterviewState]);
 
 	return {
+		newInterviewRef,
 		state,
 		setDay,
 		bookInterview,

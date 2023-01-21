@@ -22,6 +22,7 @@ const Application = (props) => {
 
 	const appointments = dailyAppointments.map((appointment) => {
 		const interview = getInterview(state, appointment.interview);
+
 		return (
 			<Appointment
 				key={appointment.id}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Confirm from "components/Appointment/Confirm";
@@ -38,6 +38,15 @@ const Appointment = ({
 	const defaultMode = EMPTY;
 	const initialMode = interview ? SHOW : defaultMode;
 	const { mode, transition, back } = useVisualMode(initialMode);
+
+	useEffect(() => {
+		if (interview && mode === EMPTY) {
+			transition(SHOW);
+		}
+		if (interview === null && mode === SHOW) {
+			transition(EMPTY);
+		}
+	}, [interview, transition, mode]);
 
 	const save = (interviewData) => {
 		transition(SAVING);
