@@ -5,7 +5,7 @@ import classNames from "classnames";
 import "components/DayListItem.scss";
 
 const DayListItem = ({
-	name, // String: state.days by reference
+	name, // String: a copy of state.days
 	setDay, // Function: callback to execute when a day is clicked
 	selected: isSelected, // Boolean: if true, use class "day-list__item--selected"
 	spots, // Number: total interview spots available for the day

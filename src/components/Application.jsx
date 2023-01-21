@@ -2,6 +2,7 @@ import React from "react";
 
 import {
 	getAppointmentsForDay,
+	getDays,
 	getInterviewersForDay,
 	getInterview,
 } from "helpers/selectors";
@@ -15,6 +16,9 @@ import "components/Application.scss";
 const Application = (props) => {
 	const { state, setDay, bookInterview, cancelInterview } =
 		useApplicationData();
+
+	const days = getDays(state);
+	console.log(days);
 
 	const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -45,7 +49,7 @@ const Application = (props) => {
 				/>
 				<hr className="sidebar__separator sidebar--centered" />
 				<nav className="sidebar__menu">
-					<DayList days={state.days} value={state.day} onChange={setDay} />
+					<DayList days={days} value={state.day} onChange={setDay} />
 				</nav>
 				<img
 					className="sidebar__lhl sidebar--centered"
