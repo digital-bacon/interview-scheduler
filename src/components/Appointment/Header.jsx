@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ time, ...props }) => {
+const Header = ({
+	time, // string.isRequired: the appointment time
+	...props
+}) => {
 	return (
 		<header className="appointment__time">
 			<h4 className="text--semi-bold">{time}</h4>

@@ -46,6 +46,8 @@ npm run storybook
 <dd><p><code>src/components/Appointment/Error</code></p></dd>
 <dt>Appointment ⇒ <a href="#components__Appointment_Form">Form</a></dt>
 <dd><p><code>src/components/Appointment/Form</code></p></dd>
+<dt>Appointment ⇒ <a href="#components__Appointment_Header">Header</a></dt>
+<dd><p><code>src/components/Appointment/Header</code></p></dd>
 </dl>
 
 <a name="components_Button"></a>
@@ -162,6 +164,15 @@ npm run storybook
   onCancel        // func.isRequired: onClick callback for cancel <Button>
   onSave          // func.isRequired: onClick callback for save <Button>
   student         // string: name of the student
+/>
+```
+<a name="components__Appointment_Header"></a>
+
+### Appointment ⇒ Header
+
+```js
+<Header
+  time            // string.isRequired: the appointment time
 />
 ```
 
