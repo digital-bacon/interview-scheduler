@@ -18,7 +18,6 @@ const Application = (props) => {
 		useApplicationData();
 
 	const days = getDays(state);
-	console.log(days);
 
 	const dailyAppointments = getAppointmentsForDay(state, state.day);
 
