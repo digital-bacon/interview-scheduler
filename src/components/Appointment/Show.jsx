@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Show = ({
-	student: studentName,
-	interviewer: interviewerName,
-	onEdit,
-	onDelete,
+	interviewer: interviewerName, // string.isRequired: name of the interviewer
+	onDelete, // func.isRequired: onClick callback for delete <img>
+	onEdit, // func.isRequired: onClick callback for edit <img>
+	student: studentName, // string.isRequired: name of the student
 	...props
 }) => {
 	return (
@@ -40,10 +40,10 @@ const Show = ({
 };
 
 Show.propTypes = {
-	student: PropTypes.string.isRequired,
 	interviewer: PropTypes.string.isRequired,
-	onEdit: PropTypes.func.isRequired,
 	onDelete: PropTypes.func.isRequired,
+	onEdit: PropTypes.func.isRequired,
+	student: PropTypes.string.isRequired,
 };
 
 export default Show;

@@ -48,6 +48,8 @@ npm run storybook
 <dd><p><code>src/components/Appointment/Form</code></p></dd>
 <dt>Appointment ⇒ <a href="#components__Appointment_Header">Header</a></dt>
 <dd><p><code>src/components/Appointment/Header</code></p></dd>
+<dt>Appointment ⇒ <a href="#components__Appointment_Show">Show</a></dt>
+<dd><p><code>src/components/Appointment/Show</code></p></dd>
 </dl>
 
 <a name="components_Button"></a>
@@ -173,6 +175,18 @@ npm run storybook
 ```js
 <Header
   time            // string.isRequired: the appointment time
+/>
+```
+<a name="components__Appointment_Show"></a>
+
+### Appointment ⇒ Show
+
+```js
+<Show
+  interviewer     // string.isRequired: name of the interviewer
+  onDelete        // func.isRequired: onClick callback for delete <img>
+  onEdit          // func.isRequired: onClick callback for edit <img>
+  student         // string.isRequired: name of the student
 />
 ```
 
