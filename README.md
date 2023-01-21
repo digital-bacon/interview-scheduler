@@ -1,5 +1,14 @@
 # Interview Scheduler
 
+
+## Demo
+
+### Features
+<img src="https://github.com/digital-bacon/interview-scheduler/blob/master/captures/scheduler-demo-single-client.gif" />
+
+### Websockets
+<img src="https://github.com/digital-bacon/interview-scheduler/blob/master/captures/scheduler-demo-websockets.gif" />
+
 ## Setup
 
 Install dependencies with `npm install`.
