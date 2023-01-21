@@ -52,7 +52,7 @@ npm run storybook
   confirm   // bool: when true, use class "button--confirm"
   danger    // bool: when true, use class "button--danger"
   disabled  // bool: when true, applies attribute "disabled"
-  onClick   // func.isRequired: callback to execute when button is clicked
+  onClick   // func.isRequired: onClick callback
 />
 ```
 <a name="components_DayList"></a>
@@ -62,7 +62,7 @@ npm run storybook
 ```js
 <DayList
   days      // array.isRequired: state.days by reference
-  onChange  // func.isRequired: callback to execute when a day is clicked
+  onChange  // func.isRequired: callback passed to <DayListItem> for onClick event
   value     // string.isRequired: state.day value
 />
 ```
@@ -73,8 +73,8 @@ npm run storybook
 ```js
 <DayListItem
   name      // string.isRequired: state.days by reference
-  setDay    // func.isRequired: callback to execute when a day is clicked
-  selected  // bool.isRequired: if true, use class "day-list__item--selected"
+  setDay    // func.isRequired: onClick callback for <li class="day-list__item">
+  selected  // bool.isRequired: if true, append selected class to <li class="day-list__item">
   spots     // number.isRequired: total interview spots available for the day
 />
 ```
@@ -86,7 +86,7 @@ npm run storybook
 <InterviewerList
   interviewers  // array.isRequired: copy of state.interviewers
   onChange      // func.isRequired: id of currently interviewer
-  value         // number: callback to execute when an interviewer is clicked
+  value         // number: callback passed to <InterviewerListItem> for onClick event
 />
 ```
 <a name="components_InterviewerListItem"></a>
@@ -98,8 +98,8 @@ npm run storybook
   avatar          // string: interviewer image url
   id              // number.isRequired: interviewer id
   name            // string.isRequired: name of interviewer 
-  selected        // bool.isRequired: Boolean: if true, use class "interviewers__item--selected"
-  setInterviewer  // func.isRequired: callback to execute when an interviewer is clicked
+  selected        // bool.isRequired: if true, append selected class to <li class="interviewers__item">
+  setInterviewer  // func.isRequired: onClick callback for interviewer <img>
 />
 ```
 <a name="components__Appointment"></a>
@@ -123,7 +123,17 @@ npm run storybook
 ```js
 <Confirm
   message     //string: message to display to user
-  onConfirm   //func: callback to execute on confirm button click
-  onCancel    //func: callback to execute on cancel button click  
+  onConfirm   //func: onClick callback for <Button>Confirm</Button>
+  onCancel    //func: onClick callback for <Button>Cancel</Button> 
 />
 ```
+<a name="components__Appointment_Empty"></a>
+
+### Appointment ⇒ Empty
+
+```js
+<Empty
+  onAdd   // func.isRequired: onClick callback for <img class="appointment__add-button" />
+/>
+```
+
