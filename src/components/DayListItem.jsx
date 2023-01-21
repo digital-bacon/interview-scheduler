@@ -5,10 +5,10 @@ import classNames from "classnames";
 import "components/DayListItem.scss";
 
 const DayListItem = ({
-	name, // string: a copy of state.days
-	setDay, // func: callback to execute when a day is clicked
-	selected: isSelected, // bool: if true, use class "day-list__item--selected"
-	spots, // number: total interview spots available for the day
+	name, // string.isRequired: day name
+	setDay, // func.isRequired: onClick callback for <li>
+	selected: isSelected, // bool.isRequired: if the day is selected
+	spots, // number.isRequired: interview spots available for the day
 	...props
 }) => {
 	const isFull = spots === 0 ? true : false;

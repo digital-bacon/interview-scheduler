@@ -6,10 +6,10 @@ import "components/InterviewerListItem.scss";
 
 const InterviewerListItem = ({
 	avatar, // string: interviewer image url
-	id, // number: interviewer id
-	name, // string: name of interviewer
-	selected: isSelected, // bool: when true, use class "interviewers__item--selected"
-	setInterviewer, // func: callback to execute when an interviewer is clicked
+	id, // number.isRequired: interviewer id
+	name, // string.isRequired: name of interviewer
+	selected: isSelected, // bool.isRequired: if the interviewer is selected
+	setInterviewer, // func.isRequired: onClick callback for interviewer <img>
 	...props
 }) => {
 	const classLibrary = {

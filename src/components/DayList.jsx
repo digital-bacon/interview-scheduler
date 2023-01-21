@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import DayListItem from "./DayListItem";
 
 const DayList = ({
-	days: daysArray, // array: a copy of state.days
-	onChange, // func: callback to execute when a day is clicked
-	value, // string: state.day value
-	...props // Any: all other props not documented here
+	days: daysArray, // array.isRequired: list of days
+	onChange, // func.isRequired: callback passed to <DayListItem>
+	value, // string.isRequired: day name
+	...props
 }) => {
 	const days = daysArray.map((day) => {
 		return (

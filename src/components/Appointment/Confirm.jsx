@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import Button from "components/Button";
 
 const Confirm = ({
-	message, //string: message to display to user
-	onConfirm, //func: callback to execute on confirm button click
-	onCancel, //func: callback to execute on cancel button click
+	message, // string: message to display to user
+	onConfirm, // func: onClick callback for confirm <Button>
+	onCancel, // func: onClick callback for cancel <Button>
 	...props
 }) => {
 	return (

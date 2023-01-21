@@ -26,9 +26,9 @@ const SHOW = "SHOW";
 const Appointment = ({
 	bookInterview, // func: updates an appointment with a new interview
 	cancelInterview, // func: cancels an interview
-	id, // number: the appointment id from state
-	interview, // object: a copy of state.interview data
-	interviewers, // array: a copy of state.interviewers data
+	id, // number: the appointment id
+	interview, // object: interview information
+	interviewers, // array: list of available interviewers
 	time, // string: the appointment time from state
 	...props
 }) => {
