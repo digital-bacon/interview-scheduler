@@ -7,11 +7,11 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 const Form = ({
-	student: studentName,
-	interviewers,
-	interviewer: interviewerId,
-	onSave,
-	onCancel,
+	interviewer: interviewerId, // number: id of the interviewer in this appointment
+	interviewers, // array.isRequired: an array of interviewer objects
+	onCancel, // func.isRequired: onClick callback for <Button>Cancel</Button>
+	onSave, // func.isRequired: onClick callback for <Button>Save</Button>
+	student: studentName, // string: name of the student in this appointment
 	...props
 }) => {
 	const initialValues = {
@@ -69,11 +69,11 @@ const Form = ({
 };
 
 Form.propTypes = {
-	student: PropTypes.string,
-	interviewers: PropTypes.array.isRequired,
 	interviewer: PropTypes.number,
-	onSave: PropTypes.func.isRequired,
+	interviewers: PropTypes.array.isRequired,
 	onCancel: PropTypes.func.isRequired,
+	onSave: PropTypes.func.isRequired,
+	student: PropTypes.string,
 };
 
 export default Form;

@@ -137,3 +137,17 @@ npm run storybook
 />
 ```
 
+<a name="components__Appointment_Empty"></a>
+
+### Appointment ⇒ Form
+
+```js
+<Form
+  interviewer   // number: id of the interviewer in this appointment
+  interviewers  // array.isRequired: an array of interviewer objects
+  onCancel      // func.isRequired: onClick callback for <Button>Cancel</Button>
+  onSave        // func.isRequired: onClick callback for <Button>Save</Button>
+  student       // string: name of the student in this appointment
+/>
+```
+
