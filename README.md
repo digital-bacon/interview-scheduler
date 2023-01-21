@@ -65,3 +65,15 @@ npm run storybook
 	value         // number: callback to execute when an interviewer is clicked
 />
 ```
+
+### InterviewerListItem
+
+```js
+<InterviewerListItem
+  avatar          // string: interviewer image url
+  id              // number.isRequired: interviewer id
+  name            // string.isRequired: name of interviewer 
+  selected        // bool.isRequired: Boolean: if true, use class "interviewers__item--selected"
+  setInterviewer  // func.isRequired: callback to execute when an interviewer is clicked
+/>
+```

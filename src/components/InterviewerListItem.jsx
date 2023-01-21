@@ -5,11 +5,11 @@ import classNames from "classnames";
 import "components/InterviewerListItem.scss";
 
 const InterviewerListItem = ({
-	id,
-	name,
-	avatar,
-	selected: isSelected,
-	setInterviewer,
+	avatar, // String: interviewer image url
+	id, // Number: interviewer id
+	name, // String: name of interviewer
+	selected: isSelected, // Boolean: when true, use class "interviewers__item--selected"
+	setInterviewer, // Function: callback to execute when an interviewer is clicked
 	...props
 }) => {
 	const classLibrary = {
@@ -43,9 +43,9 @@ const InterviewerListItem = ({
 };
 
 InterviewerListItem.propTypes = {
+	avatar: PropTypes.string,
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
-	avatar: PropTypes.string,
 	selected: PropTypes.bool.isRequired,
 	setInterviewer: PropTypes.func.isRequired,
 };
