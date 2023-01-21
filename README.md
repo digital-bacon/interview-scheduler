@@ -26,10 +26,10 @@ npm run storybook
 
 ### Button
 
-```javascript
+```js
 <Button
-  confirm   // bool: when true, will apply class "button--confirm"
-  danger    // bool: when true, will apply class "button--danger"
+  confirm   // bool: when true, use class "button--confirm"
+  danger    // bool: when true, use class "button--danger"
   disabled  // bool: when true, applies attribute "disabled"
   onClick   // func.isRequired: callback to execute when button is clicked
 />
@@ -37,10 +37,21 @@ npm run storybook
 
 ### DayList
 
-```javascript
+```js
 <DayList
   days      // array.isRequired: state.days by reference
   onChange  // func.isRequired: callback to execute when a day is clicked
   value     // string.isRequired: state.day value
+/>
+```
+
+### DayListItem
+
+```js
+<DayListItem
+  name      // string.isRequired: state.days by reference
+  setDay    // func.isRequired: callback to execute when a day is clicked
+  selected  // bool.isRequired: if true, use class "day-list__item--selected"
+  spots     // number.isRequired: total interview spots available for the day
 />
 ```
