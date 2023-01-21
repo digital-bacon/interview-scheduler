@@ -11,7 +11,7 @@ export const getDayByName = (data, dayName) => {
 };
 
 /**
- * Selects a single interview object from provided data
+ * Selects and returns a copy of a single interview object from provided data
  * @param {Object} data - the data object from which to find the interview
  * @param {Object|null} [interview] - when provided, should contain an object
  * with property 'interviewer' containing the id number of the interviewer. The
@@ -34,7 +34,8 @@ export const getInterview = (data, interview) => {
 };
 
 /**
- * Selects all appointments for the given day from provided data
+ * Selects and returns a copy of all appointments for the given day from
+ * provided data
  * @param {Object} data - the data object from which to select the appointments
  * @param {String} dayName - the day name to match. Case sensitive. Only weekday
  * names
@@ -48,12 +49,9 @@ export const getAppointmentsForDay = (data, dayName) => {
 };
 
 /**
- * Finds a single day object from provided data and returns the interviewers
- * array from that day
- * @param {Object} data - the data object from which to select the day
- * @param {String} dayName - the day name to match. Case sensitive. Only weekday
- * names
- * @returns {Array} an array of interviewer ids for the matched day
+ * Selects and returns a copy of all days from provided data
+ * @param {Object} data - the data object from which to select the days data
+ * @returns {Array} an array of day objects for the matched day
  */
 export const getDays = (data) => {
 	const days = data.days?.map((day) => day) || [];
