@@ -6,9 +6,9 @@ import InterviewerListItem from "./InterviewerListItem";
 import "components/InterviewerList.scss";
 
 const InterviewerList = ({
-	interviewers: interviewersArray,
-	value: currentInterviewerId,
-	onChange,
+	interviewers: interviewersArray, // Array: copy of state.interviewers
+	value: currentInterviewerId, // Number: id of currently interviewer
+	onChange, // Function: callback to execute when an interviewer is clicked
 	...props
 }) => {
 	const interviewers = interviewersArray.map((interviewer) => {

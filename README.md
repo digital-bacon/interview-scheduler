@@ -55,3 +55,13 @@ npm run storybook
   spots     // number.isRequired: total interview spots available for the day
 />
 ```
+
+### InterviewerList
+
+```js
+<InterviewerList
+  interviewers  // array.isRequired: copy of state.interviewers
+	onChange      // func.isRequired: id of currently interviewer
+	value         // number: callback to execute when an interviewer is clicked
+/>
+```
