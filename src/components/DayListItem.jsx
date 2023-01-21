@@ -21,15 +21,12 @@ const DayListItem = ({
 	const classDayListItem = classNames(classLibrary);
 
 	const formatSpots = (spots) => {
-		if (spots > 1) {
-			return `${spots} spots remaining`;
-		}
+		const messages = {
+			0: "no spots remaining",
+			1: `${spots} spot remaining`,
+		};
 
-		if (spots === 1) {
-			return `${spots} spot remaining`;
-		}
-
-		return "no spots remaining";
+		return messages[spots] || `${spots} spots remaining`;
 	};
 
 	return (
