@@ -39,8 +39,13 @@ npm run storybook
 <dd><p>Depending on the task the user is completing, will display a different child component.</p>
 <p><code>src/components/Appointment</code></p></dd>
 <dt>Appointment ⇒ <a href="#components__Appointment_Confirm">Confirm</a></dt>
-<dd><p><code>src/components/Appointment/Confirm</code></p>
-</dd>
+<dd><p><code>src/components/Appointment/Confirm</code></p></dd>
+<dt>Appointment ⇒ <a href="#components__Appointment_Empty">Empty</a></dt>
+<dd><p><code>src/components/Appointment/Empty</code></p></dd>
+<dt>Appointment ⇒ <a href="#components__Appointment_Error">Error</a></dt>
+<dd><p><code>src/components/Appointment/Error</code></p></dd>
+<dt>Appointment ⇒ <a href="#components__Appointment_Form">Form</a></dt>
+<dd><p><code>src/components/Appointment/Form</code></p></dd>
 </dl>
 
 <a name="components_Button"></a>
@@ -49,10 +54,10 @@ npm run storybook
 
 ```js
 <Button
-  confirm   // bool: when true, use class "button--confirm"
-  danger    // bool: when true, use class "button--danger"
-  disabled  // bool: when true, applies attribute "disabled"
-  onClick   // func.isRequired: onClick callback
+  confirm         // bool: is a confirm button
+  danger          // bool: is a danger button
+  disabled        // bool: is a disabled button
+  onClick         // func.isRequired: onClick callback
 />
 ```
 <a name="components_DayList"></a>
@@ -61,9 +66,9 @@ npm run storybook
 
 ```js
 <DayList
-  days      // array.isRequired: state.days by reference
-  onChange  // func.isRequired: callback passed to <DayListItem> for onClick event
-  value     // string.isRequired: state.day value
+  days            // array.isRequired: list of days
+  onChange        // func.isRequired: callback passed to <DayListItem>
+  value           // string.isRequired: day name
 />
 ```
 <a name="components_DayListItem"></a>
@@ -72,10 +77,10 @@ npm run storybook
 
 ```js
 <DayListItem
-  name      // string.isRequired: state.days by reference
-  setDay    // func.isRequired: onClick callback for <li class="day-list__item">
-  selected  // bool.isRequired: if true, append selected class to <li class="day-list__item">
-  spots     // number.isRequired: total interview spots available for the day
+  name            // string.isRequired: day name
+  setDay          // func.isRequired: onClick callback for <li>
+  selected        // bool.isRequired: if the day is selected
+  spots           // number.isRequired: interview spots available for the day
 />
 ```
 <a name="components_InterviewerList"></a>
@@ -84,9 +89,9 @@ npm run storybook
 
 ```js
 <InterviewerList
-  interviewers  // array.isRequired: copy of state.interviewers
-  onChange      // func.isRequired: id of currently interviewer
-  value         // number: callback passed to <InterviewerListItem> for onClick event
+  interviewers    // array.isRequired: list of interviewers
+  onChange        // func.isRequired: id of currently interviewer
+  value           // number: callback passed to <InterviewerListItem>
 />
 ```
 <a name="components_InterviewerListItem"></a>
@@ -98,7 +103,7 @@ npm run storybook
   avatar          // string: interviewer image url
   id              // number.isRequired: interviewer id
   name            // string.isRequired: name of interviewer 
-  selected        // bool.isRequired: if true, append selected class to <li class="interviewers__item">
+  selected        // bool.isRequired: if the interviewer is selected
   setInterviewer  // func.isRequired: onClick callback for interviewer <img>
 />
 ```
@@ -110,9 +115,9 @@ npm run storybook
 <Appointment
   bookInterview   // func: updates an appointment with a new interview
   cancelInterview // func: cancels an interview
-  id              // number: the appointment id from state
-  interview       // object: a copy of state.interview data
-  interviewers    // array: a copy of state.interviewers data
+  id              // number: the appointment id
+  interview       // object: interview information
+  interviewers    // array: list of available interviewers
   time            // string: the appointment time from state
 />
 ```
@@ -122,9 +127,9 @@ npm run storybook
 
 ```js
 <Confirm
-  message     //string: message to display to user
-  onConfirm   //func: onClick callback for <Button>Confirm</Button>
-  onCancel    //func: onClick callback for <Button>Cancel</Button> 
+  message         // string: message to display to user
+  onConfirm       // func: onClick callback for confirm <Button>
+  onCancel        // func: onClick callback for cancel <Button> 
 />
 ```
 <a name="components__Appointment_Empty"></a>
@@ -133,21 +138,30 @@ npm run storybook
 
 ```js
 <Empty
-  onAdd   // func.isRequired: onClick callback for <img class="appointment__add-button" />
+  onAdd           // func.isRequired: onClick callback for <img>
 />
 ```
+<a name="components__Appointment_Error"></a>
 
-<a name="components__Appointment_Empty"></a>
+### Appointment ⇒ Error
+
+```js
+<Error
+  message         // string.isRequired: error message to display
+	onClose         // func.isRequired: onClick callback for <img>
+/>
+```
+<a name="components__Appointment_Form"></a>
 
 ### Appointment ⇒ Form
 
 ```js
 <Form
-  interviewer   // number: id of the interviewer in this appointment
-  interviewers  // array.isRequired: an array of interviewer objects
-  onCancel      // func.isRequired: onClick callback for <Button>Cancel</Button>
-  onSave        // func.isRequired: onClick callback for <Button>Save</Button>
-  student       // string: name of the student in this appointment
+  interviewer     // number: id of the interviewer in this appointment
+  interviewers    // array.isRequired: list of available interviewers
+  onCancel        // func.isRequired: onClick callback for cancel <Button>
+  onSave          // func.isRequired: onClick callback for save <Button>
+  student         // string: name of the student
 />
 ```
 

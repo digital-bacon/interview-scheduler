@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Error = ({ message, onClose, ...props }) => {
+const Error = ({
+	message, // string.isRequired: error message to display
+	onClose, // func.isRequired: onClick callback for <img>
+	...props
+}) => {
 	return (
 		<main className="appointment__card appointment__card--error">
 			<section className="appointment__error-message">
