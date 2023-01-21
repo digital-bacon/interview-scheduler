@@ -21,3 +21,16 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## React Components
+
+### Button
+
+```javascript
+<Button
+  confirm   // bool: when true, will apply class "button--confirm"
+  danger    // bool: when true, will apply class "button--danger"
+  disabled  // bool: when true, applies attribute "disabled"
+  onClick   // func.isRequired: callback to execute when button is clicked
+/>
+```

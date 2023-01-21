@@ -5,11 +5,11 @@ import classNames from "classnames";
 import "components/Button.scss";
 
 const Button = ({
-	onClick,
-	disabled: isDisabled,
-	confirm: isConfirm,
-	danger: isDanger,
-	...props
+	confirm: isConfirm, // Boolean: when true, will apply class "button--confirm"
+	danger: isDanger, // Boolean: when true, will apply class "button--danger"
+	disabled: isDisabled, // Boolean: when true, applies attribute "disabled"
+	onClick, // Function: callback to execute when button is clicked
+	...props // Any: all other props not documented here
 }) => {
 	const classLibrary = {
 		button: true,
