@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Empty = ({ onAdd, ...props }) => {
+const Empty = ({
+	onAdd, // func.isRequired: onClick callback for <img class="appointment__add-button" />
+	...props
+}) => {
 	return (
 		<main className="appointment__add">
 			<img
