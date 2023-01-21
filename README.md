@@ -50,6 +50,8 @@ npm run storybook
 <dd><p><code>src/components/Appointment/Header</code></p></dd>
 <dt>Appointment ⇒ <a href="#components__Appointment_Show">Show</a></dt>
 <dd><p><code>src/components/Appointment/Show</code></p></dd>
+<dt>Appointment ⇒ <a href="#components__Appointment_Status">Status</a></dt>
+<dd><p><code>src/components/Appointment/Status</code></p></dd>
 </dl>
 
 <a name="components_Button"></a>
@@ -131,7 +133,7 @@ npm run storybook
 
 ```js
 <Confirm
-  message         // string: message to display to user
+  message         // string: confirmation message to display
   onConfirm       // func: onClick callback for confirm <Button>
   onCancel        // func: onClick callback for cancel <Button> 
 />
@@ -187,6 +189,15 @@ npm run storybook
   onDelete        // func.isRequired: onClick callback for delete <img>
   onEdit          // func.isRequired: onClick callback for edit <img>
   student         // string.isRequired: name of the student
+/>
+```
+<a name="components__Appointment_Status"></a>
+
+### Appointment ⇒ Status
+
+```js
+<Status
+  message         // string.isRequired: status message to display
 />
 ```
 

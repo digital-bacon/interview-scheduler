@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Status = ({ message, ...props }) => {
+const Status = ({
+	message, // string.isRequired: status message to display
+	...props
+}) => {
 	return (
 		<main className="appointment__card appointment__card--status">
 			<img
