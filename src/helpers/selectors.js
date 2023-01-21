@@ -11,6 +11,23 @@ export const getDayByName = (data, dayName) => {
 };
 
 /**
+ * Finds a day with appointment id, and returns the day name.
+ * @param {Object} data - the data object from which to find the day
+ * @param {String} appointmentID - the appointment id to match on
+ * @returns {String} matched day name from data
+ */
+export const getDayNameByAppointmentId = (data, appointmentId) => {
+	const hasAppointmentId = (appointmentsArray) =>
+		appointmentsArray.find((id) => id === appointmentId);
+	const dayName = data.days.reduce(
+		(matchedName, current) =>
+			hasAppointmentId(current.appointments) ? current.name : matchedName,
+		""
+	);
+	return dayName;
+};
+
+/**
  * Selects and returns a copy of a single interview object from provided data
  * @param {Object} data - the data object from which to find the interview
  * @param {Object|null} [interview] - when provided, should contain an object

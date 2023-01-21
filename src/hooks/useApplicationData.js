@@ -1,7 +1,11 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import axios from "axios";
 
-import { countAvailableInterviewSpotsForDay } from "../helpers/selectors";
+import {
+	countAvailableInterviewSpotsForDay,
+	getDayNameByAppointmentId,
+	getDayByName,
+} from "../helpers/selectors";
 
 /**
  * React hook to manage application data and state
@@ -23,20 +27,23 @@ const useApplicationData = () => {
 	});
 	const socket = useRef(null);
 	const newInterviewRef = useRef(null);
+
 	/**
-	 * Creates a copy of the the current day object from state and updates the
-	 * available interview spots in the copy. Returns an array with the updated
-	 * day object, and all other days from state
-	 * @param {Object} state - the current state object
+	 * Selects and creates a copy of the day object that matches the provided day
+	 * name in the data provided. Then updates the available interview spots for
+	 * the day and returns an array of all days from data along with the updated
+	 * day.
+	 * @param {Object} data - the data object from which to find the day
+	 * @param {String} dayName - the day name to match. Case sensitive. Only weekdays
 	 * @returns {Array} array [objects from state by reference]. The current day
 	 * object is replaced with the updated day object created by this function
 	 */
-	const updateSpots = useCallback((state) => {
-		const dayObj = state.days.find((day) => day.name === state.day);
-		const spots = countAvailableInterviewSpotsForDay(state, state.day);
+	const getDaysAndCurrentSpots = useCallback((data, dayName) => {
+		const dayObj = getDayByName(data, dayName);
+		const spots = countAvailableInterviewSpotsForDay(data, dayName);
 		const newDay = { ...dayObj, spots };
-		const newDays = state.days.map((day) =>
-			day.name === state.day ? { ...newDay } : day
+		const newDays = data.days.map((day) =>
+			day.name === dayName ? { ...newDay } : day
 		);
 		return newDays;
 	}, []);
@@ -60,7 +67,9 @@ const useApplicationData = () => {
 
 			const newState = { ...state, appointments };
 
-			const days = updateSpots(newState);
+			const dayName = getDayNameByAppointmentId(newState, appointmentId);
+
+			const days = getDaysAndCurrentSpots(newState, dayName);
 
 			const objectEquality = (object1, object2) => {
 				return JSON.stringify(object1) === JSON.stringify(object2);
@@ -73,7 +82,7 @@ const useApplicationData = () => {
 
 			setState({ ...newState, days });
 		},
-		[setState, updateSpots, state]
+		[setState, getDaysAndCurrentSpots, state]
 	);
 
 	/**
