@@ -10,6 +10,13 @@ schedule as they are made.
 
 Learn React and websockets with a real-world application.
 
+## Tech Stack
+
+  - React
+  - Webpack, Babel
+  - Axios, WebSockets
+  - Storybook, Webpack Dev Server, Jest, Testing Library
+
 ## Disclaimer
 
 This app was built for educational purposes only. Do not use this app in any
