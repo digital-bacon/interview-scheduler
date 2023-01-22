@@ -51,9 +51,9 @@ https://github.com/lighthouse-labs/scheduler-api
 ### Dev Dependencies
   - babel: ^7.4.3
   - babel-loader: 8.1.0,
+  - classnames: ^2.3.1,
   - cypress 9.7.0
   - jest: ^4.0.0,
-  - classnames: ^2.3.1,
   - prop-types: ^15.8.1,
   - react-test-renderer: ^16.9.0,
   - sass: ^1.53.0
