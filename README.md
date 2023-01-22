@@ -26,10 +26,10 @@ app. The security and privacy of information you provide is **not** guaranteed.
 ## Demo
 
 ### App Features
-<img src="https://github.com/digital-bacon/interview-scheduler/blob/master/captures/scheduler-demo-single-client.gif" />
+<img src="https://github.com/digital-bacon/interview-scheduler/blob/master/docs/scheduler-demo-single-client.gif" />
 
 ### Realtime Client Sync With Websockets
-<img src="https://github.com/digital-bacon/interview-scheduler/blob/master/captures/scheduler-demo-websockets.gif" />
+<img src="https://github.com/digital-bacon/interview-scheduler/blob/master/docs/scheduler-demo-websockets.gif" />
 
 ## Setup
 
