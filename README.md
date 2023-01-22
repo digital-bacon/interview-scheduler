@@ -1,17 +1,58 @@
 # Interview Scheduler
 
+Interview Scheduler is a React application that allows users to book and cancel
+interviews in real time.
+
+Because we use a websockets server, all connected clients receive changes to the
+schedule as they are made.
+
+## Purpose
+
+Learn React and websockets with a real-world application.
+
+## Disclaimer
+
+This app was built for educational purposes only. Do not use this app in any
+production environment or provide any sensitive information while using this
+app. The security and privacy of information you provide is **not** guaranteed.
 
 ## Demo
 
-### Features
+### App Features
 <img src="https://github.com/digital-bacon/interview-scheduler/blob/master/captures/scheduler-demo-single-client.gif" />
 
-### Websockets
+### Realtime Client Sync With Websockets
 <img src="https://github.com/digital-bacon/interview-scheduler/blob/master/captures/scheduler-demo-websockets.gif" />
 
 ## Setup
 
-Install dependencies with `npm install`.
+1. Clone this repo.
+
+2. Install dependencies with `npm install`.
+
+3. Setup the API server on localhost
+https://github.com/lighthouse-labs/scheduler-api
+
+### Dependencies
+  - axios: ^0.20.0
+  - node: ^v12.22.x
+  - normalize.css: ^8.0.1
+  - react: ^16.9.0
+  - react-dom: ^16.9.0
+  - react-scripts: 3.4.4
+
+### Dev Dependencies
+  - babel: ^7.4.3
+  - babel-loader: 8.1.0,
+  - cypress 9.7.0
+  - jest: ^4.0.0,
+  - classnames: ^2.3.1,
+  - prop-types: ^15.8.1,
+  - react-test-renderer: ^16.9.0,
+  - sass: ^1.53.0
+  - storybook: ^5.0.10,
+  - testing-library (react): ^8.0.7,
+  - testing-library (react-hooks): ^8.0.1
 
 ## Running Webpack Development Server
 
@@ -29,6 +70,12 @@ npm test
 
 ```sh
 npm run storybook
+```
+
+## Running Cypress Testing Suite
+
+```sh
+npm run cypress open -P .
 ```
 
 ## React Components
